@@ -1,11 +1,11 @@
-/** 
+/**
  * @brief It defines the game interface
  * for each command
- * 
+ *
  * @file game.h
  * @author Profesores PPROG
- * @version 1.0 
- * @date 13-01-2015 
+ * @version 1.0
+ * @date 13-01-2015
  * @copyright GNU Public License
  */
 
@@ -26,14 +26,7 @@
  * @author Profesores PPROG
  * @date 13-01-2015
  */
-typedef struct _Game{
-  Player* player;                        // A pointer to the player of the game
-  Object* objects[MAX_OBJECTS + 1];      // A matrix with all the objects of the game
-  Space* spaces[MAX_SPACES + 1];         // A matrix with all the spaces of the game
-  Die* die;                              // A pointer to the die of the game
-  T_Command last_cmd;                    // The last command executed in a game
-  STATUS last_cmd_status;                // The status of the last command executed in a game
-} Game;
+typedef struct _Game Game;
 
 /**
  * @brief Creates a game

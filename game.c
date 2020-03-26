@@ -1,11 +1,11 @@
-/** 
+/**
  * @brief It implements the game interface and all the associated callbacks
  * for each command
- * 
+ *
  * @file game.c
- * @version 1.0 
+ * @version 1.0
  * @author Profesores PPROG
- * @date 13-01-2015 
+ * @date 13-01-2015
  * @copyright GNU Public License
  */
 
@@ -17,7 +17,15 @@
 #define N_CALLBACK 9            //The number of callbacks for the commands
 #define PLAYER_ID 24            //This is the player_id that the player is initialized with during the game creation by the game_create function
 #define OBJECT_ID 8             //This is the object_id that the object is initialized with during the game creation by the game_create function
-//#define DEBUG
+
+typedef struct _Game{
+  Player* player;                        // A pointer to the player of the game
+  Object* objects[MAX_OBJECTS + 1];      // A matrix with all the objects of the game
+  Space* spaces[MAX_SPACES + 1];         // A matrix with all the spaces of the game
+  Die* die;                              // A pointer to the die of the game
+  T_Command last_cmd;                    // The last command executed in a game
+  STATUS last_cmd_status;                // The status of the last command executed in a game
+} Game;
 
 /**
    Define the function type for the callbacks
@@ -25,7 +33,7 @@
 typedef STATUS (*callback_fn)(Game* game);
 
 /**
-   List of callbacks for each command in the game 
+   List of callbacks for each command in the game
 */
 STATUS game_callback_unknown(Game* game);   //A callback for the UNKNOWN command
 STATUS game_callback_exit(Game* game);      //A callback for the EXIT command
@@ -117,7 +125,7 @@ STATUS game_set_object_location(Game* game, Id object_id, Id space_id);
 
 STATUS game_create(Game* game) {
   int i;
-  
+
   for (i = 0; i <= MAX_SPACES; i++) {
     game->spaces[i] = NULL;
   }
@@ -125,12 +133,12 @@ STATUS game_create(Game* game) {
   for (i = 0; i <= MAX_OBJECTS; i++) {
     game->objects[i] = NULL;
   }
-  
+
   game->player = player_create(PLAYER_ID);              //The player is always initialized with the PLAYER_ID
   game->die = die_create(1);                            //The die is always initialized with the value 1
   game->last_cmd = NO_CMD;
   game->last_cmd_status = OK;
-  
+
   return OK;
 }
 
@@ -165,7 +173,7 @@ STATUS game_destroy(Game* game) {
   player_destroy(game->player);
 
   die_destroy(game->die);
-        
+
   return OK;
 }
 
@@ -183,13 +191,13 @@ Space* game_get_space(Game* game, Id id){
   if (id == NO_ID) {
     return NULL;
   }
-    
+
   for (i = 0; game->spaces[i] != NULL; i++) {
     if (id == space_get_id(game->spaces[i])){
       return game->spaces[i];
     }
   }
-    
+
   return NULL;
 }
 
@@ -199,18 +207,18 @@ Object* game_get_object(Game* game, Id id){
   if (id == NO_ID) {
     return NULL;
   }
-    
+
   for (i = 0; game->objects[i] != NULL; i++) {
     if (id == object_get_id(game->objects[i])){
       return game->objects[i];
     }
   }
-    
+
   return NULL;
 }
 
 STATUS game_set_player_location(Game* game, Id id) {
-    
+
   if (id == NO_ID) {
     return ERROR;
   }
@@ -242,8 +250,8 @@ Id game_get_player_location(Game* game) {
   return player_get_location(game->player);
 }
 
-Id game_get_object_location(Game* game, Id object_id) {           
-  
+Id game_get_object_location(Game* game, Id object_id) {
+
   int i;
 
   for(i=0; game->spaces[i] != NULL; i++){                           //Goes through the spaces[] matrix of the game until it finds the space,
@@ -330,24 +338,24 @@ STATUS game_add_object(Game* game, Object* object) {
 
 void game_print_data(Game* game) {
   int i = 0;
-  
+
   printf("\n\n-------------\n\n");
-  
+
   printf("=> Spaces: \n");
   for (i = 0; game->spaces[i] != NULL; i++) {
     space_print(game->spaces[i]);
   }
-      
+
   printf("=> Player :\n");
   player_print(game->player);
-  
+
   printf("=> Objects :\n");
   for (i = 0; game->objects[i] != NULL; i++) {
     object_print(game->objects[i]);
   }
-  
+
   printf("=> Die:  ");
-  
+
   die_print(game->die);
   printf("prompt:> ");
 }
@@ -357,7 +365,7 @@ BOOL game_is_over(Game* game) {
 }
 
 /**
-   Callbacks implementation for each action 
+   Callbacks implementation for each action
 */
 
 STATUS game_callback_unknown(Game* game) {
@@ -372,15 +380,15 @@ STATUS game_callback_next(Game* game) {
   int i = 0;
   Id current_id = NO_ID;
   Id space_id = NO_ID;
-  
+
   space_id = game_get_player_location(game);
   if (space_id == NO_ID) {
     return ERROR;
   }
-  
+
   for (i = 0; game->spaces[i] != NULL; i++) {
     current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id) { 
+    if (current_id == space_id) {
       current_id = space_get_south(game->spaces[i]);
       if (current_id != NO_ID) {
          game_set_player_location(game, current_id);
@@ -398,13 +406,13 @@ STATUS game_callback_back(Game* game) {
   int i = 0;
   Id current_id = NO_ID;
   Id space_id = NO_ID;
-  
+
   space_id = game_get_player_location(game);
-  
+
   if (NO_ID == space_id) {
     return ERROR;
   }
-  
+
   for (i = 0; game->spaces[i] != NULL; i++) {
     current_id = space_get_id(game->spaces[i]);
     if (current_id == space_id) {

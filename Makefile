@@ -35,4 +35,4 @@ set_test.o: set_test.c set.h object.h types.h
 	gcc -c set_test.c -Wall -pedantic
 
 clean:
-	rm -rf goose_game space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o die_test.o die_test set_test.o set_test
+	rm -rf goose_game space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o die_test.o die_test set_test.o set_test LOG
