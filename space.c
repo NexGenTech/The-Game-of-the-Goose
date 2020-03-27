@@ -1,10 +1,10 @@
-/** 
+/**
  * @brief It implements the space functions
- * 
+ *
  * @file space.c
  * @author Profesores PPROG
- * @version 1.0 
- * @date 13-01-2015 
+ * @version 1.0
+ * @date 13-01-2015
  * @copyright GNU Public License
  */
 
@@ -22,9 +22,9 @@ typedef struct _Space{
   Id north;                   // The Id of the space that this is linked in the north
   Id south;                   // The Id of the space that this is linked in the south
   Id east;                    // The Id of the space that this is linked in the east
-  Id west;                    // The Id of the space that this is linked in the west 
+  Id west;                    // The Id of the space that this is linked in the west
   Set* objects;               // The set of the Id's of the objects that are on this space
-  char gdesc[3][8];           // An array of characters that hold the graphic description of the space 
+  char gdesc[3][8];           // An array of characters that hold the graphic description of the space
 }Space;
 
 
@@ -41,7 +41,7 @@ Space* space_create(Id id) {
   if (newSpace == NULL) {
     return NULL;
   }
-  
+
   newSpace->id = id;
 
   newSpace->name[0] = '\0';
@@ -66,7 +66,7 @@ STATUS space_destroy(Space* space) {
     return ERROR;
   }
 
-  //free(space->gdesc);
+  free(space->objects);
   free(space);
   space = NULL;
 
@@ -125,7 +125,7 @@ STATUS space_add_object(Space* space, Id object) {
   if(!set_add(space->objects, object)){
     return ERROR;
   }
-  
+
   return OK;
 }
 
@@ -212,7 +212,7 @@ Id space_get_id_at(Space* space, int position){
   if (position < 0 || position >= MAX_CAPACITY) {
     return NO_ID;
   }
-  
+
   return set_get_id_at(space->objects, position);
 }
 
@@ -260,7 +260,7 @@ STATUS space_print(Space* space) {
   } else {
     fprintf(stdout, "---> No west link.\n");
   }
-  
+
   int n_objects = space_get_n_objects(space);
   if(n_objects != 0){
     fprintf(stdout, "---> Objects :\n");
@@ -278,4 +278,3 @@ STATUS space_print(Space* space) {
 
   return OK;
 }
-
