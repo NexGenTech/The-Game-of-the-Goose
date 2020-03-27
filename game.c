@@ -25,7 +25,7 @@ typedef struct _Game{
   Die* die;                              // A pointer to the die of the game
   T_Command last_cmd;                    // The last command executed in a game
   STATUS last_cmd_status;                // The status of the last command executed in a game
-} Game;
+}Game;
 
 /**
    Define the function type for the callbacks
@@ -154,7 +154,6 @@ STATUS game_create_from_file(Game* game, char* filename) {
     return ERROR;
 
   game_set_player_location(game, game_get_space_id_at(game, 0));
-  //game_set_object_location(game, game_get_space_id_at(game, 0));
 
   return OK;
 }
@@ -201,6 +200,14 @@ Space* game_get_space(Game* game, Id id){
   return NULL;
 }
 
+Player* game_get_player(Game* game) {
+  return game->player;
+}
+
+Die* game_get_die(Game* game) {
+  return game->die;
+}
+
 Object* game_get_object(Game* game, Id id){
   int i = 0;
 
@@ -215,6 +222,15 @@ Object* game_get_object(Game* game, Id id){
   }
 
   return NULL;
+}
+
+Object* game_get_object_at(Game* game, int pos) {
+
+  if (position < 0 || position >= MAX_SPACES) {
+    return NULL;
+  }
+
+  return game->objects[pos];
 }
 
 STATUS game_set_player_location(Game* game, Id id) {
