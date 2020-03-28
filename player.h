@@ -1,9 +1,9 @@
-/** 
+/**
  * @brief It defines the player struct
- * 
+ *
  * @file player.h
  * @author Evangelos Lazarakis
- * @version 1.0 
+ * @version 1.0
  * @date 10-02-2020
  */
 
@@ -59,6 +59,7 @@ Id player_get_id(Player* player);
  * @date 10-02-2020
  *
  * @param player the player whose name is going to be changed
+ * @param name is the new name of the player
  * @return a STATUS code, ERROR if any error occures or OK
  */
 STATUS player_set_name(Player* player, char* name);
