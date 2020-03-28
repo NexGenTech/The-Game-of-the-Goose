@@ -77,9 +77,11 @@ int main(int argc, char *argv[]) {
         file = fopen(argv[3],"w");
       } else {
         fprintf(stderr, "Wrong arguments\n" );
+        return 1;
       }
     } else {
       fprintf(stderr, "Wrong arguments\n" );
+      return 1;
     }
   }
 
