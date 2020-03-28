@@ -22,6 +22,9 @@ int main(void) {
 
   inventory_print(inv);
 
+  inventory_destroy(inv);
+
   printf("This is the end of the inventory test\n");
 
+  return 0;
 }

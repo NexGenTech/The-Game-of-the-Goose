@@ -16,6 +16,8 @@ int main(void) {
 
   link_print(link);
 
+  link_destroy(link);
+
   printf("This is the end of the link test..\n\n");
 
   return 0;
