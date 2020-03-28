@@ -27,7 +27,7 @@ Inventory* inventory_create() {
 
    newInventory->objects = set_create();
 
-   newInventory->max_objects = MAX_ITEMS;
+   newInventory->max_objects = 0;
 
    return newInventory;
 }
@@ -64,12 +64,28 @@ Id inventory_get_object_at(Inventory* inventory, int position) {
     return set_get_id_at(inventory->objects, position);
 }
 
+int inventory_get_max_objects(Inventory* inventory) {
+  return inventory->max_objects;
+}
+
+STATUS inventory_set_max_objects(Inventory* inventory, int max) {
+  if (!inventory) {
+    return ERROR;
+  }
+
+  if (!(inventory->max_objects = max)) {
+    return ERROR;
+  }
+
+  return OK;
+}
+
 STATUS inventory_print(Inventory* inventory) {
   if (!inventory) {
     return ERROR;
   }
   int i = 0;
-  printf("The Inventory has the following objects:\n");
+  printf("The Inventory can carry at best %d and has the following %d objects stored:\n", inventory_get_max_objects(inventory), set_get_n_ids(inventory->objects));
   for(Id id = set_get_id_at(inventory->objects, i); id != NO_ID; id = set_get_id_at(inventory->objects, ++i)) {
     printf("  %ld\n",id );
   }

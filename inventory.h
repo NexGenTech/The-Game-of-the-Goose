@@ -12,8 +12,6 @@
 
  #include "set.h"
 
- #define MAX_ITEMS 20                    // The maximum number of objects that can be stored in an Inventory
-
  /**
   *@brief The Inventory structure
   * Stores the Id of many Object structs
@@ -74,6 +72,29 @@
   * @return the Id of the specific position in the ids array
   */
   Id inventory_get_Object_at(Inventory* inventory, int position);
+
+ /**
+  * @brief Get the max number of objects that can be added to the Inventory
+  *
+  * @author Evangelos Lazarakis
+  * @date 27-03-2020
+  *
+  * @param inventory the inventory whose max number of objects will be returned
+  * @return the max max number of objects of the Inventory
+  */
+  int inventory_get_max_objects(Inventory* inventory);
+
+  /**
+   * @brief Set the max number of objects that can be added to the Inventory
+   *
+   * @author Evangelos Lazarakis
+   * @date 27-03-2020
+   *
+   * @param inventory the inventory whose max number of objects will be changed
+   * @param the new max number of objects of the inventory
+   * @return the max max number of objects of the Inventory
+   */
+  STATUS inventory_set_max_objects(Inventory* inventory, int max);
 
  /**
   * @brief Print the data of a inventory
