@@ -1,11 +1,11 @@
-/** 
+/**
  * @brief It defines the game interface
  * for each command
- * 
+ *
  * @file game.h
  * @author Profesores PPROG
- * @version 1.0 
- * @date 13-01-2015 
+ * @version 1.0
+ * @date 13-01-2015
  * @copyright GNU Public License
  */
 
@@ -126,6 +126,20 @@ void game_print_data(Game* game);
 Space* game_get_space(Game* game, Id id);
 
 /**
+ * @brief Gets the die of the game
+ *
+ * Gets the game as input and returns a pointer to
+ * the die of the game
+ *
+ * @author Evangelos Lazarakis
+ * @date 25-03-2020
+ *
+ * @param game the game struct from which the player will be returned
+ * @return a pointer to the die of the game
+ */
+Die* game_get_die(Game* game);
+
+/**
  * @brief Gets an object from a game
  *
  * Gets an object Id as input and returns the object that has that Id
@@ -138,6 +152,35 @@ Space* game_get_space(Game* game, Id id);
  * @return a pointer to the object that its Id is equal with id
  */
 Object* game_get_object(Game* game, Id id);
+
+/**
+ * @brief Gets an object from a game
+ *
+ * Gets an int as input and returns the object that is in that
+ * position in the objects array
+ *
+ * @author Evangelos Lazarakis
+ * @date 25-03-2020
+ *
+ * @param game the game struct from which the object will be returned
+ * @param position the position in the objects array
+ * @return a pointer to the object that is in the position position
+ */
+Object* game_get_object_at(Game* game, int position);
+
+/**
+ * @brief Gets the player of the game
+ *
+ * Gets the game as input and returns a pointer to
+ * the player of the game
+ *
+ * @author Evangelos Lazarakis
+ * @date 25-03-2020
+ *
+ * @param game the game struct from which the player will be returned
+ * @return a pointer to the player of the game
+ */
+Player* game_get_player(Game* game);
 
 /**
  * @brief Gets the location Id of the player
