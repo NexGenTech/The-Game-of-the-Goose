@@ -18,15 +18,6 @@
 #define PLAYER_ID 24            //This is the player_id that the player is initialized with during the game creation by the game_create function
 #define OBJECT_ID 8             //This is the object_id that the object is initialized with during the game creation by the game_create function
 
-typedef struct _Game{
-  Player* player;                        // A pointer to the player of the game
-  Object* objects[MAX_OBJECTS + 1];      // A matrix with all the objects of the game
-  Space* spaces[MAX_SPACES + 1];         // A matrix with all the spaces of the game
-  Die* die;                              // A pointer to the die of the game
-  T_Command last_cmd;                    // The last command executed in a game
-  STATUS last_cmd_status;                // The status of the last command executed in a game
-}Game;
-
 /**
    Define the function type for the callbacks
 */
