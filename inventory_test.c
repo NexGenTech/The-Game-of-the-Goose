@@ -5,8 +5,10 @@
 int main(void) {
   printf("This is the start of the inventory test\n");
   Inventory* inv = inventory_create();
+  int max = 20;
 
-  for (Id id = 1; id < 10; id++) {
+  inventory_set_max_objects(inv, max);
+  for (Id id = 1; id <= 10; id++) {
     inventory_add_object(inv, id);
   }
 
