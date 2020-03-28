@@ -52,7 +52,7 @@ void graphic_engine_destroy(Graphic_engine *ge){
   free(ge);
 }
 
-void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
+void graphic_engine_paint_game(Graphic_engine *ge, Game game){
   Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID, player_obj = NO_ID;
   int last_die = -1;
   Space* space_act = NULL;

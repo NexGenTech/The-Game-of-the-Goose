@@ -1,9 +1,9 @@
-/** 
- * @brief It implements the game reader 
- * 
+/**
+ * @brief It implements the game reader
+ *
  * @file game_reader.c
  * @author Adam Mahjoub
- * @version 1.0 
+ * @version 1.0
  * @date 13-02-2020
  */
 
@@ -15,7 +15,7 @@
 #include "game.h"
 
 
-STATUS game_reader_load_spaces(Game* game, char* filename) {
+STATUS game_reader_load_spaces(Game game, char* filename) {
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
@@ -60,7 +60,7 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
 #ifdef DEBUG
       printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 #endif
-      
+
       space = space_create(id);
       if (space != NULL) {
        space_set_name(space, name);
@@ -85,7 +85,7 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
   return status;
 }
 
-STATUS game_reader_load_objects(Game* game, char* filename){
+STATUS game_reader_load_objects(Game game, char* filename){
 
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
@@ -118,7 +118,7 @@ STATUS game_reader_load_objects(Game* game, char* filename){
     #ifdef DEBUG
       printf("Leido: %ld|%s|%ld|", id, name,location);
     #endif
-      
+
       object = object_create(id);
       if (object != NULL) {
        object_set_name(object, name);

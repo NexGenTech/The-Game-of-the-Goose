@@ -1,10 +1,10 @@
-/** 
- * @brief It defines the game loop 
- * 
+/**
+ * @brief It defines the game loop
+ *
  * @file game_loop.c
  * @author Profesores PPROG
- * @version 1.0 
- * @date 13-01-2015 
+ * @version 1.0
+ * @date 13-01-2015
  * @copyright GNU Public License
  */
 
@@ -27,7 +27,7 @@
  * @param file_name  the file that contains the game board
  * @return 1 in case of an error or else 0
  */
-int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
+int game_loop_init(Game game, Graphic_engine **gengine, char *file_name);
 
 /**
  * @brief Runs the game loop
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if (!game_loop_init(&game, &gengine, argv[1])){
+  if (!game_loop_init(game, &gengine, argv[1])){
     game_loop_run(game, gengine, file);
     game_loop_cleanup(game, gengine);
   }
@@ -91,16 +91,16 @@ int main(int argc, char *argv[]) {
   if (file != NULL){
     fclose(file);
   }
-  
+
   return 0;
 }
 
-int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name){
+int game_loop_init(Game game, Graphic_engine **gengine, char *file_name){
   if (game_create_from_file(game, file_name) == ERROR) {
     fprintf(stderr, "Error while initializing game.\n");
     return 1;
   }
-  
+
   if ((*gengine = graphic_engine_create()) == NULL) {
     fprintf(stderr, "Error while initializing graphic engine.\n");
     game_destroy(game);
@@ -114,19 +114,19 @@ void game_loop_run(Game game, Graphic_engine *gengine, FILE* file){
   extern char *cmd_to_str[N_CMD][N_CMDT];
   T_Command command = NO_CMD;
 
-  while ((command != EXIT) && !game_is_over(&game)) {
-    graphic_engine_paint_game(gengine, &game);
+  while ((command != EXIT) && !game_is_over(game)) {
+    graphic_engine_paint_game(gengine, game);
     command = command_get_user_input();
-    game_update(&game, command);
-    
+    game_update(game, command);
+
     if (file != NULL) {
       char status[255] = "";
-      T_Command last_cmd = game_get_last_command(&game);
-      if (game_get_last_command_status(&game) == OK){
+      T_Command last_cmd = game_get_last_command(game);
+      if (game_get_last_command_status(game) == OK){
         strcpy(status,"OK");
       } else {
         strcpy(status,"ERROR");
-      } 
+      }
 
       fprintf(file, " %s (%s) : %s\n", cmd_to_str[last_cmd-NO_CMD][CMDL], cmd_to_str[last_cmd-NO_CMD][CMDS], status);
     }
@@ -134,6 +134,6 @@ void game_loop_run(Game game, Graphic_engine *gengine, FILE* file){
 }
 
 void game_loop_cleanup(Game game, Graphic_engine *gengine){
-  game_destroy(&game);
+  game_destroy(game);
   graphic_engine_destroy(gengine);
 }

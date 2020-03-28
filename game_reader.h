@@ -1,9 +1,9 @@
-/** 
- * @brief It defines the game reader 
- * 
+/**
+ * @brief It defines the game reader
+ *
  * @file game_reader.h
  * @author Adam Mahjoub
- * @version 1.0 
+ * @version 1.0
  * @date 13-02-2020
  */
 
@@ -22,7 +22,7 @@
  * @param filename the file that we are going to load the spaces from
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_reader_load_spaces(Game* game, char* filename);
+STATUS game_reader_load_spaces(Game game, char* filename);
 
 /**
  * @brief Loads objects from a file
@@ -34,6 +34,6 @@ STATUS game_reader_load_spaces(Game* game, char* filename);
  * @param filename the file that we are going to load the objects from
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_reader_load_objects(Game* game, char* filename);
+STATUS game_reader_load_objects(Game game, char* filename);
 
 #endif

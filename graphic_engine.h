@@ -1,9 +1,9 @@
-/** 
+/**
  * @brief It defines a textual graphic engine
- * 
+ *
  * @file graphic_engine.h
  * @author Profesores PPROG
- * @version 1.0 
+ * @version 1.0
  * @date 18-01-2017
  * @copyright GNU Public License
  */
@@ -23,7 +23,7 @@ typedef struct _Graphic_engine Graphic_engine;
  * @date 18-01-2017
  *
  * @return a pointer to the created Graphic_engine
- */ 
+ */
 Graphic_engine* graphic_engine_create();
 
 /**
@@ -33,7 +33,7 @@ Graphic_engine* graphic_engine_create();
  * @date 18-01-2017
  *
  * @param ge the Graphic_engine that is going to be destroyed
- */ 
+ */
 void graphic_engine_destroy(Graphic_engine *ge);
 
 /**
@@ -42,9 +42,9 @@ void graphic_engine_destroy(Graphic_engine *ge);
  * @date 18-01-2017
  *
  * @param ge a Graphic_engine
- * @param game the game that is going to be printed 
- */ 
-void graphic_engine_paint_game(Graphic_engine *ge, Game *game);
+ * @param game the game that is going to be printed
+ */
+void graphic_engine_paint_game(Graphic_engine *ge, Game game);
 void graphic_engine_write_command(Graphic_engine *ge, char *str);
 
 #endif

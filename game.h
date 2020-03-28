@@ -26,14 +26,7 @@
  * @author Profesores PPROG
  * @date 13-01-2015
  */
-typedef struct _Game{
-  Player* player;                        // A pointer to the player of the game
-  Object* objects[MAX_OBJECTS + 1];      // A matrix with all the objects of the game
-  Space* spaces[MAX_SPACES + 1];         // A matrix with all the spaces of the game
-  Die* die;                              // A pointer to the die of the game
-  T_Command last_cmd;                    // The last command executed in a game
-  STATUS last_cmd_status;                // The status of the last command executed in a game
-} Game;
+typedef struct _Game* Game;
 
 /**
  * @brief Creates a game
@@ -46,7 +39,7 @@ typedef struct _Game{
  * @param game the game struct that is going to be initialized
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_create(Game* game);
+STATUS game_create(Game game);
 
 /**
  * @brief Creates a game from an open file
@@ -61,7 +54,7 @@ STATUS game_create(Game* game);
  * @param filename the name of the file from which the function is giong to get data
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_create_from_file(Game* game, char* filename);
+STATUS game_create_from_file(Game game, char* filename);
 
 /**
  * @brief Updates a game
@@ -75,7 +68,7 @@ STATUS game_create_from_file(Game* game, char* filename);
  * @param cmd the command that is going to be executed
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_update(Game* game, T_Command cmd);
+STATUS game_update(Game game, T_Command cmd);
 
 /**
  * @brief Destroys a game
@@ -86,7 +79,7 @@ STATUS game_update(Game* game, T_Command cmd);
  * @param game the game struct that is going to be destroyed
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_destroy(Game* game);
+STATUS game_destroy(Game game);
 
 /**
  * @brief Returns FALSE
@@ -98,7 +91,7 @@ STATUS game_destroy(Game* game);
  * @param game the game struct that is not over
  * @return a BOOL code, FALSE if the game is not over
  */
-BOOL game_is_over(Game* game);
+BOOL game_is_over(Game game);
 
 /**
  * @brief Prints the data of a game
@@ -109,7 +102,7 @@ BOOL game_is_over(Game* game);
  *
  * @param game the game struct that is going to be printed
  */
-void game_print_data(Game* game);
+void game_print_data(Game game);
 
 /**
  * @brief Gets a space from a game
@@ -123,7 +116,7 @@ void game_print_data(Game* game);
  * @param id the Id of the space that is going to be returned
  * @return a pointer to the space that its Id is equal with id
  */
-Space* game_get_space(Game* game, Id id);
+Space* game_get_space(Game game, Id id);
 
 /**
  * @brief Gets the die of the game
@@ -137,7 +130,7 @@ Space* game_get_space(Game* game, Id id);
  * @param game the game struct from which the player will be returned
  * @return a pointer to the die of the game
  */
-Die* game_get_die(Game* game);
+Die* game_get_die(Game game);
 
 /**
  * @brief Gets an object from a game
@@ -151,7 +144,7 @@ Die* game_get_die(Game* game);
  * @param id the Id of the object that is going to be returned
  * @return a pointer to the object that its Id is equal with id
  */
-Object* game_get_object(Game* game, Id id);
+Object* game_get_object(Game game, Id id);
 
 /**
  * @brief Gets an object from a game
@@ -166,7 +159,7 @@ Object* game_get_object(Game* game, Id id);
  * @param position the position in the objects array
  * @return a pointer to the object that is in the position position
  */
-Object* game_get_object_at(Game* game, int position);
+Object* game_get_object_at(Game game, int position);
 
 /**
  * @brief Gets the player of the game
@@ -180,7 +173,7 @@ Object* game_get_object_at(Game* game, int position);
  * @param game the game struct from which the player will be returned
  * @return a pointer to the player of the game
  */
-Player* game_get_player(Game* game);
+Player* game_get_player(Game game);
 
 /**
  * @brief Gets the location Id of the player
@@ -193,7 +186,7 @@ Player* game_get_player(Game* game);
  * @param game the game struct whose player location Id will be returned
  * @return the location Id of the player
  */
-Id game_get_player_location(Game* game);
+Id game_get_player_location(Game game);
 
 /**
  * @brief Gets the location Id of an object
@@ -207,7 +200,7 @@ Id game_get_player_location(Game* game);
  * @param object_id the object whose location Id will be returned
  * @return the location Id of the object
  */
-Id game_get_object_location(Game* game, Id object_id);
+Id game_get_object_location(Game game, Id object_id);
 
 /**
  * @brief Gets the number of objects in the game
@@ -218,7 +211,7 @@ Id game_get_object_location(Game* game, Id object_id);
  * @param game the game whose number of objects will be returned
  * @return the number of objects of the game
  */
-int game_get_n_objects(Game* game);
+int game_get_n_objects(Game game);
 
 /**
  * @brief Gets the last command that was executed in the game
@@ -230,7 +223,7 @@ int game_get_n_objects(Game* game);
  * @param game the game struct whose last command is going to be returned
  * @return the last command that was executed in the game
  */
-T_Command game_get_last_command(Game* game);
+T_Command game_get_last_command(Game game);
 
 /**
  * @brief Gets the last command's status that was executed in the game
@@ -242,7 +235,7 @@ T_Command game_get_last_command(Game* game);
  * @param game the game struct whose last command's status is going to be returned
  * @return the last command's status that was executed in the game
  */
-STATUS game_get_last_command_status(Game* game);
+STATUS game_get_last_command_status(Game game);
 
 /**
  * @brief Adds a space to the game
@@ -257,7 +250,7 @@ STATUS game_get_last_command_status(Game* game);
  * @param space the space we want to add
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_add_space(Game* game, Space* space);
+STATUS game_add_space(Game game, Space* space);
 
 /**
  * @brief Adds an object to the game
@@ -272,6 +265,6 @@ STATUS game_add_space(Game* game, Space* space);
  * @param object the object we want to add
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_add_object(Game* game, Object* object);
+STATUS game_add_object(Game game, Object* object);
 
 #endif
