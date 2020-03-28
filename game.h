@@ -163,10 +163,10 @@ Object* game_get_object(Game* game, Id id);
  * @date 25-03-2020
  *
  * @param game the game struct from which the object will be returned
- * @param pos the position in the objects array
- * @return a pointer to the object that is in the position pos
+ * @param position the position in the objects array
+ * @return a pointer to the object that is in the position position
  */
-Object* game_get_object_at(Game* game, int pos);
+Object* game_get_object_at(Game* game, int position);
 
 /**
  * @brief Gets the player of the game

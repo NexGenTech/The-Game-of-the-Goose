@@ -215,13 +215,13 @@ Object* game_get_object(Game* game, Id id){
   return NULL;
 }
 
-Object* game_get_object_at(Game* game, int pos) {
+Object* game_get_object_at(Game* game, int position) {
 
   if (position < 0 || position >= MAX_SPACES) {
     return NULL;
   }
 
-  return game->objects[pos];
+  return game->objects[position];
 }
 
 STATUS game_set_player_location(Game* game, Id id) {
