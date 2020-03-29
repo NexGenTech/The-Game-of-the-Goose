@@ -149,6 +149,7 @@ STATUS game_reader_load_players(Game game, char* filename) {
   Id id = NO_ID, location = NO_ID;
   int backpack_size = 0;
   Player* player = NULL;
+  STATUS status = OK;
 
 
   if (!filename) {
@@ -179,4 +180,12 @@ STATUS game_reader_load_players(Game game, char* filename) {
       }
     }
   }
+
+  if (ferror(file)) {
+    status = ERROR;
+  }
+
+  fclose(file);
+
+  return status;
 }
