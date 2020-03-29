@@ -139,3 +139,44 @@ STATUS game_reader_load_objects(Game game, char* filename){
   return status;
 
 }
+
+STATUS game_reader_load_players(Game game, char* filename) {
+
+  FILE* file = NULL;
+  char line[WORD_SIZE] = "";
+  char name[WORD_SIZE] = "";
+  char* toks = NULL;
+  Id id = NO_ID, location = NO_ID;
+  int backpack_size = 0;
+  Player* player = NULL;
+
+
+  if (!filename) {
+    return ERROR;
+  }
+
+  file = fopen(filename, "r");
+  if (file == NULL) {
+    return ERROR;
+  }
+
+  while (fgets(line, WORD_SIZE, file)) {
+    if (strncmp("#p:", line, 3) == 0) {
+      toks = strtok(line + 3, "|");
+      id = atol(toks);
+      toks = strtok(NULL, "|");
+      strcpy(name, toks);
+      toks = strtok(NULL, "|");
+      location = atol(toks);
+      toks = strtok(NULL, "|");
+      backpack_size = atol(toks);
+
+      player = player_create(id);
+      if (player != NULL) {
+        player_set_name(player, name);
+        //player_set_backpack_size(player, backpack_size);
+        game_set_player_location(game, location);
+      }
+    }
+  }
+}
