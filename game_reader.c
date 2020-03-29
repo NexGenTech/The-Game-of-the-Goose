@@ -189,3 +189,56 @@ STATUS game_reader_load_players(Game game, char* filename) {
 
   return status;
 }
+
+STATUS game_reader_load_links(Game game, char* filename) {
+
+  FILE* file = NULL;
+  char line[WORD_SIZE] = "";
+  char name[WORD_SIZE] = "";
+  char* toks = NULL;
+  Id id = NO_ID, space_one = NO_ID, space_two = NO_ID;
+  LINK_STATUS link_status = OPEN;
+  Link* link = NULL;
+  STATUS status = OK;
+
+  if (!filename) {
+    return ERROR;
+  }
+
+  file = fopen(filename, "r");
+  if (file == NULL) {
+    return ERROR;
+  }
+
+  while (fgets(line, WORD_SIZE, file)) {
+    if (strncmp("#l:", line, 3) == 0) {
+      toks = strtok(line + 3, "|");
+      id = atol(toks);
+      toks = strtok(NULL, "|");
+      strcpy(name, toks);
+      toks = strtok(NULL, "|");
+      space_one = atol(toks);
+      toks = strtok(NULL, "|");
+      space_two = atol(toks);
+      toks = strtok(NULL, "|");
+      link_status = atol(toks);
+
+      link = link_create(id);
+      if (link != NULL) {
+        link_set_name(link, name);
+        link_set_space_one_id(link, space_one);
+        link_set_space_two_id(link, space_two);
+        link_set_status(link, link_status);
+        //game_add_link(game, link);
+      }
+    }
+  }
+
+  if (ferror(file)) {
+    status = ERROR;
+  }
+
+  fclose(file);
+
+  return status;
+}
