@@ -15,7 +15,36 @@ int main(void) {
 
   player_print(player);
 
-  printf("This is the end of the player test\n");
+  printf("Adding 23 objects to the player's backpack\n");
+  for(Id id = 1; id <= 23; id++) {
+    player_add_object(player, id);
+  }
+  player_print(player);
+
+  printf("\nOnly the first 20 objects were actually added to the backpack cause its max capacity is 20\n\n\n");
+
+  printf("Now the odd-number objects will be deleted from the backpack\n\n");
+
+  for (Id id = 1; id <= 20; id+=2) {
+    player_del_object(player, id);
+  }
+
+  player_print(player);
+
+  Id id = 7;
+  if(player_search_object(player, id) == id) {
+    printf("\nThe object with id %ld exists in the backpack\n",id );
+  } else {
+    printf("\nThe object with id %ld does not exist in the backpack\n",id );
+  }
+
+  id = 10;
+  if(player_search_object(player, id) == id) {
+    printf("\nThe object with id %ld exists in the backpack\n",id );
+  } else {
+    printf("The object with id %ld does not exist in the backpack\n",id );
+  }
+  printf("\nThis is the end of the player test\n");
 
   return 0;
 }
