@@ -12,6 +12,7 @@
 
 
 #include "types.h"
+#include "inventory.h"
 
 /**
  * @brief the Player structure
