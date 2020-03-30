@@ -96,6 +96,18 @@
    */
   STATUS inventory_set_max_objects(Inventory* inventory, int max);
 
+  /**
+   * @brief Search if an object exists in the inventory
+   *
+   * @author Evangelos Lazarakis
+   * @date 26-02-2020
+   *
+   * @param inventory the inventory in which we are searching for
+   * @param object the object for which we are searching in the inventory
+   * @return NO_ID if we did not find the object in the inventory, otherwise return object
+   */
+  Id inventory_search_object(Inventory inventory, Id object);
+
  /**
   * @brief Print the data of a inventory
   *
