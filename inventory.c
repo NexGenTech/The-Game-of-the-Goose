@@ -49,7 +49,11 @@ STATUS inventory_add_object(Inventory* inventory, Id object) {
     return ERROR;
   }
 
-  return set_add(inventory->objects, object);
+  if ((set_get_n_ids(inventory->objects)) < inventory->max_objects){
+    return set_add(inventory->objects, object);
+  } else {
+    return ERROR;
+  }
 }
 
 STATUS inventory_del_object(Inventory* inventory, Id object) {
