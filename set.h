@@ -12,7 +12,7 @@
 
  #include "object.h"
 
- #define MAX_CAPACITY 20                    // The maximum number of Id's that can be stored in a set
+ #define MAX_CAPACITY 100                    // The maximum number of Id's that can be stored in a set
 
 /**
  *@brief The Set structure
@@ -72,7 +72,7 @@ STATUS set_del(Set* set, Id id);
  * @param set the set in which we are searching for
  * @param id the id for which we are searching in the set
  * @return NO_ID if we did not find the id in the set, otherwise return id
- */ 
+ */
 Id set_search_id(Set* set, Id id);
 
 /**
@@ -82,7 +82,7 @@ Id set_search_id(Set* set, Id id);
 * @date 26-02-2020
 *
 * @param set the set from which we want its number of Id's
-* @return the set's number of Id's 
+* @return the set's number of Id's
 */
 int set_get_n_ids(Set* set);
 
