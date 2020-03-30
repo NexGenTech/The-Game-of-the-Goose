@@ -84,7 +84,7 @@ STATUS inventory_set_max_objects(Inventory* inventory, int max) {
   return OK;
 }
 
-Id inventory_search_object(Inventory inventory, Id object) {
+Id inventory_search_object(Inventory* inventory, Id object) {
   return set_search_id(inventory->objects, object);
 }
 

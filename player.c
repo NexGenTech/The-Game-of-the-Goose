@@ -143,9 +143,9 @@ STATUS player_set_backpack_size(Player* player, int size) {
 
 void player_print(Player* player){
 
-  printf("The player with id %ld has : \n name -> %s\n location id -> %ld\n object ids : %ld\n",player->id,player->name,player->location);
+  printf("The player with id %ld has : \n name -> %s\n location id -> %ld\n object ids : \n",player->id,player->name,player->location);
   int i = 0;
-  for(Id id = inventory_get_object_at(player->backpack, i); id != NO_ID; id = inventory_get_object_at(player->backpack, i++)) {
+  for(Id id = inventory_get_object_at(player->backpack, i); id != NO_ID; id = inventory_get_object_at(player->backpack, ++i)) {
     printf("    ->%ld\n",id);
   }
 }

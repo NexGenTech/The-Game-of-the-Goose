@@ -71,7 +71,7 @@
   * @param position the position in the ids array whose object id will be returned
   * @return the Id of the specific position in the ids array
   */
-  Id inventory_get_Object_at(Inventory* inventory, int position);
+  Id inventory_get_object_at(Inventory* inventory, int position);
 
  /**
   * @brief Get the max number of objects that can be added to the Inventory
@@ -106,7 +106,7 @@
    * @param object the object for which we are searching in the inventory
    * @return NO_ID if we did not find the object in the inventory, otherwise return object
    */
-  Id inventory_search_object(Inventory inventory, Id object);
+  Id inventory_search_object(Inventory* inventory, Id object);
 
  /**
   * @brief Print the data of a inventory
