@@ -21,7 +21,7 @@ Set* set_create(){
   Set* newSet = NULL;
 
   newSet = (Set*) malloc(sizeof (Set));
-  
+
   if (newSet == NULL) {
     return NULL;
   }
@@ -95,7 +95,8 @@ Id set_search_id(Set* set, Id id){
 
   for(i=0 ; i < n_ids ; i++){
     if(set->ids[i] == id){
-      return id;}
+      return id;
+    }
   }
 
   return NO_ID;
