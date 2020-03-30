@@ -98,26 +98,52 @@ STATUS player_set_location(Player* player, Id location);
 Id player_get_location(Player* player);
 
 /**
- * @brief Set the object Id of a player
+ * @brief Add an object to the player"s backpack
  *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
  *
- * @param player the player whose object Id is going to be changed
+ * @param player the player that an object will be added to his backpack
+ * @paeam object the object that will be added to the player's backpack
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS player_set_object(Player* player,Id object);
+STATUS player_add_object(Player* player,Id object);
 
 /**
- * @brief Get the object Id of a player
+ * @brief Delete an object to the player"s backpack
  *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
  *
- * @param player the player whose object Id is going to be returned
- * @return the object Id of the player
+ * @param player the player that an object will be deleteed to his backpack
+ * @paeam object the object that will be deleteed to the player's backpack
+ * @return a STATUS code, ERROR if any error occures or OK
  */
-Id player_get_object(Player* player);
+STATUS player_del_object(Player* player,Id object);
+
+/**
+ * @brief Search if an object exists in the backpack of a player
+ *
+ * @author Evangelos Lazarakis
+ * @date 26-02-2020
+ *
+ * @param player the player in whose backpack we are searching for
+ * @param object the object for which we are searching in the backpack
+ * @return NO_ID if we did not find the object in the backpack, otherwise return object
+ */
+Id player_search_object(Player* player, Id object);
+
+/**
+ * @brief Change the size of the player's backpack
+ *
+ * @author Evangelos Lazarakis
+ * @date 30-03-2020
+ *
+ * @param player the player whose backpack's size will be changed
+ * @param size the new size of the player's backpack
+ * @return a STATUS code, ERROR if any error occures or OK
+ */
+STATUS player_set_backpack_size(Player* player, int size);
 
 /**
  * @brief Print the data of a player
