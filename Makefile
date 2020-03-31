@@ -1,11 +1,20 @@
 all: goose_game die_test set_test
 
+tests: die_test set_test player_test link_test inventory_test
+
 goose_game: space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o inventory.o link.o
 	gcc -o goose_game space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o inventory.o link.o -Wall -g -pedantic
+
 die_test: die_test.o
 	gcc -o die_test die.c die_test.o -Wall -pedantic
 set_test: set_test.o
 	gcc -o set_test set.c set_test.o -Wall -pedantic
+player_test: player_test.o
+	gcc -o player_test player_test.o player.c object.c inventory.c set.c -Wall -pedantic
+link_test: link_test.o
+	gcc -o link_test link_test.o link.c -Wall -pedantic
+inventory_test: inventory_test.o
+	gcc -o inventory_test inventory_test.o inventory.c set.c -Wall -pedantic
 
 space.o: space.c types.h space.h set.h object.h
 	gcc -c space.c -Wall -pedantic
@@ -45,4 +54,4 @@ link_test.o: link_test.c link.h types.h
 	gcc -c link_test.c -Wall -pedantic
 
 clean:
-	rm -rf goose_game space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o die_test.o die_test set_test.o set_test LOG
+	rm -rf goose_game space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o die_test.o die_test set_test.o set_test player_test player_test.o inventory_test inventory_test.o link_test link_test.o LOG
