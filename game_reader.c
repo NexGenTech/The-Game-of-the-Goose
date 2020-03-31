@@ -229,7 +229,7 @@ STATUS game_reader_load_links(Game game, char* filename) {
         link_set_space_one_id(link, space_one);
         link_set_space_two_id(link, space_two);
         link_set_status(link, link_status);
-        //game_add_link(game, link);
+        game_add_link(game, link);
       }
     }
   }

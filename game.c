@@ -25,6 +25,7 @@
   Die* die;                              // A pointer to the die of the game
   T_Command last_cmd;                    // The last command executed in a game
   STATUS last_cmd_status;                // The status of the last command executed in a game
+  Link* links[MAX_LINKS + 1];            // A matrix with all the links between spaces in the game
 };
 
 /**
@@ -132,6 +133,10 @@ STATUS game_create(Game game) {
 
   for (i = 0; i <= MAX_OBJECTS; i++) {
     game->objects[i] = NULL;
+  }
+
+  for (i = 0; i <= MAX_LINKS; i++) {
+    game->links[i] = NULL;
   }
 
   game->player = player_create(PLAYER_ID);              //The player is always initialized with the PLAYER_ID
@@ -348,6 +353,27 @@ STATUS game_add_object(Game game, Object* object) {
   }
 
   game->objects[i] = object;
+
+  return OK;
+}
+
+STATUS game_add_link(Game game, Link* link) {
+  int i = 0;
+
+  if (link == NULL) {
+    return ERROR;
+  }
+
+
+  while ( game->links[i] != NULL){
+    i++;
+  }
+
+  if (i >= MAX_LINKS) {
+    return ERROR;
+  }
+
+  game->links[i] = link;
 
   return OK;
 }

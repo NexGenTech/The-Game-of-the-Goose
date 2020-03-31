@@ -268,4 +268,19 @@ STATUS game_add_space(Game game, Space* space);
  */
 STATUS game_add_object(Game game, Object* object);
 
+/**
+ * @brief Adds a link to the game
+ *
+ * Inserts the link that it got as input at the first empty
+ * slot in the links[] matrix of the game
+ *
+ * @author Evangelos Lazarakis
+ * @date 03-03-2020
+ *
+ * @param game the game in which we want to add a link to
+ * @param link the link we want to add
+ * @return a STATUS code, ERROR if any error occures or OK
+ */
+STATUS game_add_link(Game game, Link* link);
+
 #endif
