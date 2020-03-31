@@ -20,12 +20,12 @@
 
  struct _Game{
   Player* player;                        // A pointer to the player of the game
-  Object* objects[MAX_OBJECTS + 1];      // A matrix with all the objects of the game
-  Space* spaces[MAX_SPACES + 1];         // A matrix with all the spaces of the game
+  Object* objects[MAX_OBJECTS + 1];      // An array with all the objects of the game
+  Space* spaces[MAX_SPACES + 1];         // An array with all the spaces of the game
   Die* die;                              // A pointer to the die of the game
   T_Command last_cmd;                    // The last command executed in a game
   STATUS last_cmd_status;                // The status of the last command executed in a game
-  Link* links[MAX_LINKS + 1];            // A matrix with all the links between spaces in the game
+  Link* links[MAX_LINKS + 1];            // An array with all the links between spaces in the game
 };
 
 /**
