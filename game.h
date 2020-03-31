@@ -275,7 +275,7 @@ STATUS game_add_object(Game game, Object* object);
  * slot in the links[] matrix of the game
  *
  * @author Evangelos Lazarakis
- * @date 03-03-2020
+ * @date 30-03-2020
  *
  * @param game the game in which we want to add a link to
  * @param link the link we want to add
