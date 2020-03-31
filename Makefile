@@ -54,4 +54,4 @@ link_test.o: link_test.c link.h types.h
 	gcc -c link_test.c -Wall -pedantic
 
 clean:
-	rm -rf goose_game space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o die_test.o die_test set_test.o set_test player_test player_test.o inventory_test inventory_test.o link_test link_test.o LOG
+	rm -rf goose_game space.o command.o screen.o graphic_engine.o game_loop.o game.o object.o player.o game_reader.o die.o set.o die_test.o die_test set_test.o set_test player_test player_test.o inventory_test inventory_test.o inventory.o link_test link_test.o link.o LOG
