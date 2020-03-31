@@ -176,7 +176,7 @@ STATUS game_reader_load_players(Game game, char* filename) {
       if (player != NULL) {
         player_set_name(player, name);
         player_set_backpack_size(player, backpack_size);
-        player_set_location(game, location);
+        player_set_location(player, location);
       }
     }
   }
