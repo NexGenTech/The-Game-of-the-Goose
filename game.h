@@ -17,6 +17,7 @@
 #include "player.h"
 #include "object.h"
 #include "die.h"
+#include "link.h"
 
 
 /**
