@@ -454,12 +454,12 @@ STATUS game_callback_take(Game game){
 
   int n_objects = game_get_n_objects(game);
 
-  if(player_get_object(game->player) == NO_ID){
+  if(player_backpack_has_space(game->player) == OK){
     for(int i = 0; i < n_objects; i++){
       Id obj_id = object_get_id(game->objects[i]);
       if (game_get_object_location(game, obj_id) == space_get_id(space)){
         if(strcmp(obj, object_get_name(game->objects[i])) == 0){
-          player_set_object(game->player, obj_id);
+          player_add_object(game->player, obj_id);
           space_del_object(space, obj_id);
           return OK;
         }
