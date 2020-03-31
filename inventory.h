@@ -108,6 +108,17 @@
    */
   Id inventory_search_object(Inventory* inventory, Id object);
 
+  /**
+   * @brief Checks if an inventory is full or not
+   *
+   * @author Evangelos Lazarakis
+   * @date 30-03-2020
+   *
+   * @param inventory the inventory which will be checked
+   * @return a STATUS code, ERROR if the inventory is full or OK otherwise
+   */
+  STATUS inventory_has_space(Inventory* inventory);
+
  /**
   * @brief Print the data of a inventory
   *

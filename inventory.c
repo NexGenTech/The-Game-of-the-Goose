@@ -88,6 +88,14 @@ Id inventory_search_object(Inventory* inventory, Id object) {
   return set_search_id(inventory->objects, object);
 }
 
+STATUS inventory_has_space(Inventory* inventory) {
+  if ((set_get_n_ids(inventory->objects)) == inventory->max_objects) {
+    return ERROR;
+  } else {
+    return OK;
+  }
+}
+
 STATUS inventory_print(Inventory* inventory) {
   if (!inventory) {
     return ERROR;
