@@ -484,7 +484,7 @@ STATUS game_callback_take(Game game){
     for(int i = 0; i < n_objects; i++){
       Id obj_id = object_get_id(game->objects[i]);
       if (game_get_object_location(game, obj_id) == space_get_id(space)){
-        if(strcmp(obj, object_get_name(game->objects[i])) == 0){
+        if (strcmp(obj, object_get_name(game->objects[i])) == 0){
           player_add_object(game->player, obj_id);
           space_del_object(space, obj_id);
           return OK;
@@ -500,13 +500,24 @@ STATUS game_callback_drop(Game game){
 
   Space* space = game_get_space(game,game_get_player_location(game));
 
-  if(player_get_object(game->player) != NO_ID){
-    game_set_object_location(game, player_get_object(game->player) ,space_get_id(space));
-    player_set_object(game->player,NO_ID);
-    return OK;
-  } else {
-    return ERROR;
+  char obj[255];
+  scanf("%s",obj);      // The object's name must be typed in order to drop it
+
+  int n_objects = game_get_n_objects(game);
+
+  for(int i = 0; i < n_objects; i++) {
+    Object* dummy = game_get_object_at(game, i);
+    if (strcpy(obj, object_get_name(dummy)) == 0) {
+      Id obj_id = object_get_id(dummy);
+      if (player_search_object(game->player, obj_id) != NO_ID) {
+        player_del_object(game->player, obj_id);
+        space_add_object(space, obj_id);
+        return OK;
+      }
+    }
   }
+
+  return ERROR;
 
 }
 
