@@ -86,7 +86,7 @@ STATUS space_set_name(Space* space, char* name) {
 }
 
 STATUS space_set_north(Space* space, Id id) {
-  if (!space || id == NO_ID) {
+  if (!space) {
     return ERROR;
   }
   space->north = id;
@@ -94,7 +94,7 @@ STATUS space_set_north(Space* space, Id id) {
 }
 
 STATUS space_set_south(Space* space, Id id) {
-  if (!space || id == NO_ID) {
+  if (!space) {
     return ERROR;
   }
   space->south = id;
@@ -102,7 +102,7 @@ STATUS space_set_south(Space* space, Id id) {
 }
 
 STATUS space_set_east(Space* space, Id id) {
-  if (!space || id == NO_ID) {
+  if (!space) {
     return ERROR;
   }
   space->east = id;
@@ -110,7 +110,7 @@ STATUS space_set_east(Space* space, Id id) {
 }
 
 STATUS space_set_west(Space* space, Id id) {
-  if (!space || id == NO_ID) {
+  if (!space) {
     return ERROR;
   }
   space->west = id;
