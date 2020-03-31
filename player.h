@@ -147,6 +147,17 @@ Id player_search_object(Player* player, Id object);
 STATUS player_set_backpack_size(Player* player, int size);
 
 /**
+ * @brief Checks if a player's backpack is full or not
+ *
+ * @author Evangelos Lazarakis
+ * @date 30-03-2020
+ *
+ * @param player the player whose backpack will be checked
+ * @return a STATUS code, ERROR if the backpack is full or OK otherwise
+ */
+STATUS player_backpack_has_space(Player* player);
+
+/**
  * @brief Print the data of a player
  *
  * @author Evangelos Lazarakis

@@ -141,6 +141,10 @@ STATUS player_set_backpack_size(Player* player, int size) {
   return OK;
 }
 
+STATUS player_backpack_has_space(Player* player) {
+  return inventory_has_space(player->backpack);
+}
+
 void player_print(Player* player){
 
   printf("The player with id %ld has : \n name -> %s\n location id -> %ld\n object ids : \n",player->id,player->name,player->location);

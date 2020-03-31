@@ -23,6 +23,12 @@ int main(void) {
 
   printf("\nOnly the first 20 objects were actually added to the backpack cause its max capacity is 20\n\n\n");
 
+  if (player_backpack_has_space(player)) {
+    printf("The player's backpack still has some spare space\n");
+  } else {
+    printf("The player's backpack is full\n");
+  }
+
   printf("Now the odd-number objects will be deleted from the backpack\n\n");
 
   for (Id id = 1; id <= 20; id+=2) {
@@ -30,6 +36,12 @@ int main(void) {
   }
 
   player_print(player);
+
+  if (player_backpack_has_space(player)) {
+    printf("The player's backpack still has some spare space\n");
+  } else {
+    printf("The player's backpack is full\n");
+  }
 
   Id id = 7;
   if(player_search_object(player, id) == id) {
