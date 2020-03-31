@@ -105,4 +105,6 @@ STATUS inventory_print(Inventory* inventory) {
   for(Id id = set_get_id_at(inventory->objects, i); id != NO_ID; id = set_get_id_at(inventory->objects, ++i)) {
     printf("  %ld\n",id );
   }
+
+  return OK;
 }

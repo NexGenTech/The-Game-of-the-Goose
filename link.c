@@ -135,4 +135,6 @@ STATUS link_print(Link* link) {
   } else {
     printf("CLOSED\n\n");
   }
+
+  return OK;
 }
