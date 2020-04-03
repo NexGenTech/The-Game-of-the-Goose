@@ -122,6 +122,18 @@ STATUS link_set_space_two_id(Link* link, Id id) {
   return OK;
 }
 
+Id link_get_other(Link* link, Id space) {
+
+  if (space == link->space_one) {
+    return link->space_two;
+  } else if (space == link->space_two) {
+    return link->space_one;
+  }
+
+  return NO_ID;           // If the space does not match any of the two space ids of the link
+                          // then the function returns NO_ID
+}
+
 STATUS link_print(Link* link) {
   if(!link) {
     return ERROR;

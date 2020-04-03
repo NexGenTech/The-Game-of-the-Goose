@@ -147,6 +147,19 @@ STATUS link_set_space_one_id(Link* link, Id id);
 STATUS link_set_space_two_id(Link* link, Id id);
 
 /**
+ * @brief Gets one of the space Ids in a link and
+ * returns the other one
+ *
+ * @author Evangelos Lazarakis
+ * @date 28-03-2020
+ *
+ * @param link the link from which we want to get the other space Id
+ * @param space the space id of one of the two spaces in the link
+ * @return the id of the other space
+ */
+Id link_get_other(Link* link, Id space);
+
+/**
  * @brief Print the data of a link
  *
  * @author Evangelos Lazarakis
