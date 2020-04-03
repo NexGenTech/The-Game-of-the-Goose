@@ -283,4 +283,18 @@ STATUS game_add_object(Game game, Object* object);
  */
 STATUS game_add_link(Game game, Link* link);
 
+/**
+ * @brief Gets a link of the game
+ *
+ * Gets the game and the link;s Id as input and returns a pointer to
+ * that link
+ *
+ * @author Evangelos Lazarakis
+ * @date 25-03-2020
+ *
+ * @param game the game struct from which the link will be returned
+ * @return a pointer to the link of the game
+ */
+Link* game_get_link(Game game, Id id);
+
 #endif

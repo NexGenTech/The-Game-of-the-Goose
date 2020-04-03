@@ -378,6 +378,22 @@ STATUS game_add_link(Game game, Link* link) {
   return OK;
 }
 
+Link* game_get_link(Game game, Id id){
+  int i = 0;
+
+  if (id == NO_ID) {
+    return NULL;
+  }
+
+  for (i = 0; game->links[i] != NULL; i++) {
+    if (id == link_get_id(game->links[i])){
+      return game->links[i];
+    }
+  }
+
+  return NULL;
+}
+
 void game_print_data(Game game) {
   int i = 0;
 
@@ -423,7 +439,7 @@ STATUS game_callback_next(Game game) {
   Id south = space_get_south(space);
 
   if(south != NO_ID){
-    game_set_player_location(game, south);
+    game_set_player_location(game, link_get_other(game_get_link(game, south), space_get_id(space)));
     return OK;
   } else {
     return ERROR;
@@ -435,7 +451,7 @@ STATUS game_callback_back(Game game) {
   Id north = space_get_north(space);
 
   if(north != NO_ID){
-    game_set_player_location(game, north);
+    game_set_player_location(game, link_get_other(game_get_link(game, north), space_get_id(space)));
     return OK;
   } else {
     return ERROR;
@@ -503,7 +519,7 @@ STATUS game_callback_left(Game game){
   Id west = space_get_west(space);
 
   if(west != NO_ID){
-    game_set_player_location(game, west);
+    game_set_player_location(game, link_get_other(game_get_link(game, west), space_get_id(space)));
     return OK;
   } else {
     return ERROR;
@@ -516,7 +532,7 @@ STATUS game_callback_right(Game game){
   Id east = space_get_east(space);
 
   if(east != NO_ID){
-    game_set_player_location(game, east);
+    game_set_player_location(game, link_get_other(game_get_link(game, east), space_get_id(space)));
     return OK;
   } else {
     return ERROR;
