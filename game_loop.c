@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
 
 Game game_loop_init(Graphic_engine **gengine, char *file_name){
   Game game;
-  if ((game = game_create_from_file(file_name)) == ERROR) {
+  if ((game = game_create_from_file(file_name)) == NULL) {
     fprintf(stderr, "Error while initializing game.\n");
     return NULL;
   }
