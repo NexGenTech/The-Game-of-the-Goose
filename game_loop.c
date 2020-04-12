@@ -22,12 +22,11 @@
  * @date 13-01-2015
  * @author Profesores PPROG
  *
- * @param game  the Game struct to be initialized
  * @param gengine  the Graphic_engine struct to be initialized
  * @param file_name  the file that contains the game board
- * @return 1 in case of an error or else 0
+ * @return the created Game
  */
-int game_loop_init(Game game, Graphic_engine **gengine, char *file_name);
+Game game_loop_init(Graphic_engine **gengine, char *file_name);
 
 /**
  * @brief Runs the game loop
@@ -85,7 +84,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if (!game_loop_init(game, &gengine, argv[1])){
+  if ((game = game_loop_init(&gengine, argv[1])) != NULL){
     game_loop_run(game, gengine, file);
     game_loop_cleanup(game, gengine);
   }
@@ -97,19 +96,20 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-int game_loop_init(Game game, Graphic_engine **gengine, char *file_name){
-  if (game_create_from_file(game, file_name) == ERROR) {
+Game game_loop_init(Graphic_engine **gengine, char *file_name){
+  Game game;
+  if ((game = game_create_from_file(file_name)) == ERROR) {
     fprintf(stderr, "Error while initializing game.\n");
-    return 1;
+    return NULL;
   }
 
   if ((*gengine = graphic_engine_create()) == NULL) {
     fprintf(stderr, "Error while initializing graphic engine.\n");
     game_destroy(game);
-    return 1;
+    return NULL;
   }
 
-  return 0;
+  return game;
 }
 
 void game_loop_run(Game game, Graphic_engine *gengine, FILE* file){

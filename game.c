@@ -124,7 +124,9 @@ STATUS game_set_object_location(Game game, Id object_id, Id space_id);
    Game interface implementation
 */
 
-STATUS game_create(Game game) {
+Game game_create() {
+
+  Game game = malloc(sizeof(*game));
   int i;
 
   for (i = 0; i <= MAX_SPACES; i++) {
@@ -135,32 +137,29 @@ STATUS game_create(Game game) {
     game->objects[i] = NULL;
   }
 
-  for (i = 0; i <= MAX_LINKS; i++) {
-    game->links[i] = NULL;
-  }
-
   game->player = player_create(PLAYER_ID);              //The player is always initialized with the PLAYER_ID
   game->die = die_create(1);                            //The die is always initialized with the value 1
   game->last_cmd = NO_CMD;
   game->last_cmd_status = OK;
 
-  return OK;
+  return game;
 }
 
-STATUS game_create_from_file(Game game, char* filename) {
+Game game_create_from_file(char* filename) {
 
-  if (game_create(game) == ERROR)
-    return ERROR;
+  Game game = game_create();
+  if (game == NULL)
+    return NULL;
 
   if (game_reader_load_spaces(game, filename) == ERROR)
-    return ERROR;
+    return NULL;
 
   if (game_reader_load_objects(game, filename) == ERROR)
-    return ERROR;
+    return NULL;
 
   game_set_player_location(game, game_get_space_id_at(game, 0));
 
-  return OK;
+  return game;
 }
 
 STATUS game_destroy(Game game) {

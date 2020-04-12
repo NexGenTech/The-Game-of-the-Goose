@@ -34,13 +34,12 @@ typedef struct _Game* Game;
  *
  * Initializes all the fields of a Game struct
  *
- * @author Profesores PPROG
- * @date 13-01-2015
+ * @author Evangelos Lazarakis
+ * @date 10-04-2015
  *
- * @param game the game struct that is going to be initialized
- * @return a STATUS code, ERROR if any error occures or OK
+ * @return a pointer to the created Game struct
  */
-STATUS game_create(Game game);
+Game game_create();
 
 /**
  * @brief Creates a game from an open file
@@ -48,14 +47,13 @@ STATUS game_create(Game game);
  * Initializes all the fields of a Game struct using the game_create function
  * and sets the location of the player and the object on the game board
  *
- * @author Profesores PPROG
- * @date 13-01-2015
+ * @author Evangelos Lazarakis
+ * @date 10-04-2015
  *
- * @param game the game struct that is going to be initialized
  * @param filename the name of the file from which the function is giong to get data
- * @return a STATUS code, ERROR if any error occures or OK
+ * @return a pointer to the created Game struct
  */
-STATUS game_create_from_file(Game game, char* filename);
+Game game_create_from_file(char* filename);
 
 /**
  * @brief Updates a game
