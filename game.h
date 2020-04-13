@@ -282,6 +282,18 @@ STATUS game_add_object(Game game, Object* object);
 STATUS game_add_link(Game game, Link* link);
 
 /**
+ * @brief Adds a player to the game
+ *
+ * @author Evangelos Lazarakis
+ * @date 30-03-2020
+ *
+ * @param game the game in which we want to add a link to
+ * @param player the player we want to add
+ * @return a STATUS code, ERROR if any error occures or OK
+ */
+STATUS game_add_player(Game game, Player* player);
+
+/**
  * @brief Gets a link of the game
  *
  * Gets the game and the link;s Id as input and returns a pointer to

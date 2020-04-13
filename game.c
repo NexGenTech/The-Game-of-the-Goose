@@ -141,7 +141,7 @@ Game game_create() {
     game->links[i] = NULL;
   }
 
-  game->player = player_create(PLAYER_ID);              //The player is always initialized with the PLAYER_ID
+  game->player = NULL;              //The player is always initialized with the PLAYER_ID
   game->die = die_create(1);                            //The die is always initialized with the value 1
   game->last_cmd = NO_CMD;
   game->last_cmd_status = OK;
@@ -164,7 +164,10 @@ Game game_create_from_file(char* filename) {
   if (game_reader_load_links(game, filename) == ERROR)
     return NULL;
 
-  game_set_player_location(game, game_get_space_id_at(game, 0));
+  if (game_reader_load_players(game, filename) == ERROR)
+    return NULL;
+
+  //game_set_player_location(game, game_get_space_id_at(game, 0));
 
   return game;
 }
@@ -248,6 +251,16 @@ Object* game_get_object_at(Game game, int position) {
   }
 
   return game->objects[position];
+}
+
+STATUS game_add_player(Game game, Player* player) {
+  if(player == NULL) {
+    return ERROR;
+  }
+
+  game->player = player;
+
+  return OK;
 }
 
 STATUS game_set_player_location(Game game, Id id) {
