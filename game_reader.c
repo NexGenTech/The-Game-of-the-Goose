@@ -178,6 +178,8 @@ STATUS game_reader_load_players(Game game, char* filename) {
         player_set_backpack_size(player, backpack_size);
         player_set_location(player, location);
       }
+
+      game_add_player(game, player);
     }
   }
 
