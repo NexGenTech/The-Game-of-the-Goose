@@ -1,10 +1,10 @@
-/** 
+/**
  * @brief It implements the command interpreter
- * 
+ *
  * @file command.c
  * @author Profesores PPROG
- * @version 2.0 
- * @date 13-01-2020 
+ * @version 2.0
+ * @date 13-01-2020
  * @copyright GNU Public License
  */
 
@@ -16,7 +16,7 @@
 
 //A matrix with all the possible commands
 char *cmd_to_str[N_CMD][N_CMDT] = {{"","No command"}, {"","Unknown"},{"e","Exit"}, {"n","Next"}, {"b","Back"},
-{"t","Take"}, {"d","Drop"}, {"r","Roll"}, {"l","Left"}, {"r","Right"}};
+{"t","Take"}, {"d","Drop"}, {"rl","Roll"}, {"l","Left"}, {"r","Right"}};
 
 T_Command command_get_user_input(){
 
