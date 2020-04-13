@@ -27,7 +27,7 @@ Inventory* inventory_create() {
 
    newInventory->objects = set_create();
 
-   newInventory->max_objects = 0;
+   newInventory->max_objects = 1;
 
    return newInventory;
 }
