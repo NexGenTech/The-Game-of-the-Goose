@@ -24,6 +24,7 @@
   T_Command last_cmd;                    // The last command executed in a game
   STATUS last_cmd_status;                // The status of the last command executed in a game
   Link* links[MAX_LINKS + 1];            // An array with all the links between spaces in the game
+  char last_desc[WORD_SIZE + 1];         // The last description looked up by the player
 };
 
 /**
@@ -95,14 +96,14 @@ Id game_get_space_id_at(Game game, int position);
 /**
  * @brief Gets a objects from a game
  *
- * Gets an index as input and returns the objects that is in that position in the objectss[]
+ * Gets an index as input and returns the objects that is in that position in the objects[]
  * matrix in the game
  *
  * @author Evangelos Lazarakis
  * @date 03-03-2020
  *
  * @param game the game struct from which the objects will be returned
- * @param position the position of the objects in the objectss[] matrix in the game
+ * @param position the position of the objects in the objects[] matrix in the game
  * @return the id of that objects
  */
 Id game_get_object_id_at(Game game, int position);
@@ -161,6 +162,7 @@ Game game_create() {
   game->die = die_create(1);                            //The die is always initialized with the value 1
   game->last_cmd = NO_CMD;
   game->last_cmd_status = OK;
+  game->last_desc[0] = '\0';
 
   return game;
 }
@@ -341,6 +343,21 @@ int game_get_n_objects(Game game){
   }
 
   return i;
+}
+
+STATUS game_set_description(Game* game, char* desc) {
+
+  if(desc == NULL) {
+    return ERROR;
+  }
+
+  strcpy(game->last_desc, desc);
+
+  return OK;
+}
+
+char* game_get_description(Game* game) {
+  return game->last_desc;
 }
 
 STATUS game_update(Game game, T_Command cmd) {
@@ -618,4 +635,26 @@ STATUS game_callback_move(Game game) {
 
 STATUS game_callback_inspect(Game game) {
 
+  Space* space = game_get_space(game,game_get_player_location(game));
+
+  char target[255];      // The target of the inspect command
+  scanf("%s",target);
+
+  if((strcmp(target, "s") == 0) || (strcmp(target, "space") == 0)) {
+    game_set_description(game, space_get_description(space));
+    return OK;
+  } else {
+    for(int i = 0; game->objects[i] != NULL; i++){
+      if(strcmp(target, object_get_name(game->objects[i])) == 0) {
+        Object* obj = game_get_object_at(game, i);
+        Id obj_id = object_get_id(obj);
+        if((player_search_object(game->player, obj_id) != NO_ID) || (space_contain_object(space, obj_id) == TRUE)) {
+          game_set_description(game, object_get_description(obj));
+          return OK;
+        }
+      }
+    }
+  }
+
+  return ERROR;
 }
