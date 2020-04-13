@@ -1,9 +1,9 @@
-/** 
+/**
  * @brief It defines the object struct
- * 
+ *
  * @file object.h
  * @author Evangelos Lazarakis
- * @version 1.0 
+ * @version 1.0
  * @date 10-02-2020
  */
 
@@ -76,6 +76,33 @@ STATUS object_set_name(Object* object, char* name);
  * @return the name of the object
  */
 const char* object_get_name(Object* object);
+
+/**
+ * @brief Sets the description of the object
+ *
+ * Gets a string as input and sets it as the object's description
+ *
+ * @date 05-04-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose description will change
+ * @param desc the new description of the object
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_description(Object* object, char* desc);
+
+/**
+ * @brief Gets the description of the object
+ *
+ * Returns a object's description
+ *
+ * @date 05-04-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose description will be returned
+ * @return a string with the object's description
+ */
+char* object_get_description(Object* object);
 
 /**
  * @brief Print the data of a object

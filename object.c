@@ -1,10 +1,10 @@
-/** 
+/**
  * @brief It implements the object struct and all
  * of its functions
- * 
+ *
  * @file object.c
  * @author Evangelos Lazarakis
- * @version 1.0 
+ * @version 1.0
  * @date 10-02-2020
  */
 
@@ -15,8 +15,9 @@
 
 
 typedef struct _Object{
-  Id id;              // The Id of the object
-  char name[WORD_SIZE + 1];   // The name of the object
+  Id id;                              // The Id of the object
+  char name[WORD_SIZE + 1];           // The name of the object
+  char Description[WORD_SIZE + 1];    // A description of the object
 }Object;
 
 
@@ -26,15 +27,15 @@ Object* object_create(Id id){
   Object *newObject = NULL;
 
     newObject = (Object *) malloc(sizeof (Object));
-  
+
     if (newObject == NULL) {
       return NULL;
     }
-    
+
     newObject->id = id;
-  
+
     newObject->name[0] = '\0';
-  
+
   return newObject;
 }
 
@@ -73,6 +74,21 @@ const char * object_get_name(Object* object) {
     return NULL;
   }
   return object->name;
+}
+
+STATUS object_set_description(Object* object, char* desc) {
+
+  if(desc == NULL) {
+    return ERROR;
+  }
+
+  strcpy(object->description, desc);
+
+  return OK;
+}
+
+char* object_get_description(Object* object) {
+  return object->description;
 }
 
 void object_print(Object* object){
