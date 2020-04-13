@@ -1,9 +1,9 @@
-/** 
+/**
  * @brief It defines a space
- * 
+ *
  * @file space.h
  * @author Profesores PPROG
- * @version 1.0 
+ * @version 1.0
  * @date 13-01-2015
  * @copyright GNU Public License
  */
@@ -27,7 +27,7 @@ typedef struct _Space Space;
 
 
 /**
- * @brief Creates a space 
+ * @brief Creates a space
  *
  * space_create creates a space with the Id that it is given
  *
@@ -40,7 +40,7 @@ typedef struct _Space Space;
 Space* space_create(Id id);
 
 /**
- * @brief Destroys a space 
+ * @brief Destroys a space
  *
  * space_destroy destroys a space
  *
@@ -48,12 +48,12 @@ Space* space_create(Id id);
  * @author Profesores PPROG
  *
  * @param space  is the space that is going to be destroyed
- * @return a STATUS code, ERROR in case of an error or OK 
+ * @return a STATUS code, ERROR in case of an error or OK
  */
 STATUS space_destroy(Space* space);
 
 /**
- * @brief Gets the Id of a space 
+ * @brief Gets the Id of a space
  *
  * space_get_id gets the Id of a space
  *
@@ -66,7 +66,7 @@ STATUS space_destroy(Space* space);
 Id space_get_id(Space* space);
 
 /**
- * @brief Sets the name of a space 
+ * @brief Sets the name of a space
  *
  * space_set_name changes the name of a space
  *
@@ -80,7 +80,7 @@ Id space_get_id(Space* space);
 STATUS space_set_name(Space* space, char* name);
 
 /**
- * @brief Gets the name of a space 
+ * @brief Gets the name of a space
  *
  * space_get_name gets the name of a space
  *
@@ -93,7 +93,7 @@ STATUS space_set_name(Space* space, char* name);
 const char* space_get_name(Space* space);
 
 /**
- * @brief Sets the north id of a space 
+ * @brief Sets the north id of a space
  *
  * space_set_north changes the north id of a space
  *
@@ -107,7 +107,7 @@ const char* space_get_name(Space* space);
 STATUS space_set_north(Space* space, Id id);
 
 /**
- * @brief Gets the north id of a space 
+ * @brief Gets the north id of a space
  *
  * space_get_north gets the north id of a space
  *
@@ -120,7 +120,7 @@ STATUS space_set_north(Space* space, Id id);
 Id space_get_north(Space* space);
 
 /**
- * @brief Sets the south id of a space 
+ * @brief Sets the south id of a space
  *
  * space_set_south changes the south id of a space
  *
@@ -134,7 +134,7 @@ Id space_get_north(Space* space);
 STATUS space_set_south(Space* space, Id id);
 
 /**
- * @brief Gets the south id of a space 
+ * @brief Gets the south id of a space
  *
  * space_get_south gets the south id of a space
  *
@@ -147,7 +147,7 @@ STATUS space_set_south(Space* space, Id id);
 Id space_get_south(Space* space);
 
 /**
- * @brief Sets the east id of a space 
+ * @brief Sets the east id of a space
  *
  * space_set_east changes the east id of a space
  *
@@ -161,7 +161,7 @@ Id space_get_south(Space* space);
 STATUS space_set_east(Space* space, Id id);
 
 /**
- * @brief Gets the east id of a space 
+ * @brief Gets the east id of a space
  *
  * space_get_east gets the east id of a space
  *
@@ -174,7 +174,7 @@ STATUS space_set_east(Space* space, Id id);
 Id space_get_east(Space* space);
 
 /**
- * @brief Sets the west id of a space 
+ * @brief Sets the west id of a space
  *
  * space_set_west changes the west id of a space
  *
@@ -188,7 +188,7 @@ Id space_get_east(Space* space);
 STATUS space_set_west(Space* space, Id id);
 
 /**
- * @brief Gets the west id of a space 
+ * @brief Gets the west id of a space
  *
  * space_get_west gets the west id of a space
  *
@@ -265,7 +265,7 @@ Id space_get_id_at(Space* space, int position);
 int space_get_n_objects(Space* space);
 
 /**
- * @brief Sets a line of the graphic description of a space 
+ * @brief Sets a line of the graphic description of a space
  *
  * space_set_graphics sets a line in the graphic description of a space
  *
@@ -280,7 +280,7 @@ int space_get_n_objects(Space* space);
 STATUS space_set_graphics_line(Space* space, char* graphics, int line);
 
 /**
- * @brief Gets a line from the graphic description of a space 
+ * @brief Gets a line from the graphic description of a space
  *
  * space_get_graphics gets a line from the graphic description of a space
  *
@@ -294,7 +294,34 @@ STATUS space_set_graphics_line(Space* space, char* graphics, int line);
 char* space_get_graphics_line(Space* space, int line);
 
 /**
- * @brief Prints the data of a space 
+ * @brief Sets the description of the space
+ *
+ * Gets a string as input and sets it as the space's description
+ *
+ * @date 05-04-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose description will change
+ * @param desc the new description of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_description(Space* space, char* desc);
+
+/**
+ * @brief Gets the description of the space
+ *
+ * Returns a space's description
+ *
+ * @date 05-04-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose description will be returned
+ * @return a string with the space's description
+ */
+char* space_get_description(Space* space);
+
+/**
+ * @brief Prints the data of a space
  *
  * space_print prints all of a space's information
  *

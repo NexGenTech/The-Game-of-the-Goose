@@ -17,14 +17,15 @@
 
 
 typedef struct _Space{
-  Id id;                      // Id of the space
-  char name[WORD_SIZE + 1];   // The name of the space
-  Id north;                   // The Id of the space that this is linked in the north
-  Id south;                   // The Id of the space that this is linked in the south
-  Id east;                    // The Id of the space that this is linked in the east
-  Id west;                    // The Id of the space that this is linked in the west
-  Set* objects;               // The set of the Id's of the objects that are on this space
-  char gdesc[3][8];           // An array of characters that hold the graphic description of the space
+  Id id;                        // Id of the space
+  char name[WORD_SIZE + 1];     // The name of the space
+  Id north;                     // The Id of the space that this is linked in the north
+  Id south;                     // The Id of the space that this is linked in the south
+  Id east;                      // The Id of the space that this is linked in the east
+  Id west;                      // The Id of the space that this is linked in the west
+  Set* objects;                 // The set of the Id's of the objects that are on this space
+  char gdesc[3][8];             // An array of characters that hold the graphic description of the space
+  char Description[WORD_SIZE + 1];  // A description of the space
 }Space;
 
 
@@ -53,11 +54,11 @@ Space* space_create(Id id) {
 
   newSpace->objects = set_create();
 
-  int i;
-  for(i=0 ; i<3 ; i++){
+  for(int i=0 ; i<3 ; i++){
     newSpace->gdesc[i][0] = '\0';
   }
 
+  newSpace->description[0] = '\0';
   return newSpace;
 }
 
@@ -222,6 +223,21 @@ int space_get_n_objects(Space* space){
 
 char* space_get_graphics_line(Space* space, int line){
   return space->gdesc[line];
+}
+
+STATUS space_set_description(Space* space, char* desc) {
+
+  if(desc == NULL) {
+    return ERROR;
+  }
+
+  strcpy(space->description, desc);
+
+  return OK;
+}
+
+char* space_get_description(Space* space) {
+  return space->description;
 }
 
 STATUS space_print(Space* space) {
