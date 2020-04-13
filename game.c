@@ -137,6 +137,10 @@ Game game_create() {
     game->objects[i] = NULL;
   }
 
+  for (i = 0; i <= MAX_LINKS; i++) {
+    game->links[i] = NULL;
+  }
+
   game->player = player_create(PLAYER_ID);              //The player is always initialized with the PLAYER_ID
   game->die = die_create(1);                            //The die is always initialized with the value 1
   game->last_cmd = NO_CMD;
@@ -157,6 +161,9 @@ Game game_create_from_file(char* filename) {
   if (game_reader_load_objects(game, filename) == ERROR)
     return NULL;
 
+  if (game_reader_load_links(game, filename) == ERROR)
+    return NULL;
+
   game_set_player_location(game, game_get_space_id_at(game, 0));
 
   return game;
@@ -173,9 +180,15 @@ STATUS game_destroy(Game game) {
     object_destroy(game->objects[i]);
   }
 
+  for (i = 0; game->links[i] != NULL; i++) {
+    link_destroy(game->links[i]);
+  }
+
   player_destroy(game->player);
 
   die_destroy(game->die);
+
+  free(game);
 
   return OK;
 }
@@ -394,26 +407,34 @@ Link* game_get_link(Game game, Id id){
 }
 
 void game_print_data(Game game) {
-  int i = 0;
 
   printf("\n\n-------------\n\n");
 
   printf("=> Spaces: \n");
-  for (i = 0; game->spaces[i] != NULL; i++) {
+  for (int i = 0; game->spaces[i] != NULL; i++) {
     space_print(game->spaces[i]);
   }
 
-  printf("=> Player :\n");
+  printf("\n=> Player :\n");
   player_print(game->player);
 
-  printf("=> Objects :\n");
-  for (i = 0; game->objects[i] != NULL; i++) {
+  printf("\n=> Objects :\n");
+  for (int i = 0; game->objects[i] != NULL; i++) {
     object_print(game->objects[i]);
   }
 
-  printf("=> Die:  ");
-
+  printf("\n=> Die:  \n");
   die_print(game->die);
+
+  printf("\n=> Links:  \n");
+  Link* link = game_get_link(game, 1);
+  int i = 1;
+
+  while(link != NULL) {
+    link_print(link);
+    link = game_get_link(game,++i);
+  }
+
   printf("prompt:> ");
 }
 
