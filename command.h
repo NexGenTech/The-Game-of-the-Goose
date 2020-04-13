@@ -1,10 +1,10 @@
-/** 
+/**
  * @brief It implements the command interpreter
- * 
+ *
  * @file command.h
  * @author Profesores PPROG
- * @version 1.0 
- * @date 19-12-2014 
+ * @version 1.0
+ * @date 19-12-2014
  * @copyright GNU Public License
  */
 
@@ -12,11 +12,11 @@
 #define COMMAND_H
 
 #define N_CMDT 2           //Number of command types
-#define N_CMD 10           //Number of commands
+#define N_CMD 12           //Number of commands
 
 typedef enum enum_CmdType {CMDS, CMDL} T_CmdType;           //An enumeration for the command types
 
-typedef enum enum_Command {NO_CMD = -1, UNKNOWN, EXIT, NEXT, BACK, TAKE, DROP, ROLL, LEFT, RIGHT} T_Command;           //An enumeration for all the commands
+typedef enum enum_Command {NO_CMD = -1, UNKNOWN, EXIT, NEXT, BACK, TAKE, DROP, ROLL, LEFT, RIGHT, MOVE, INSPECT} T_Command;           //An enumeration for all the commands
 
 /**
  * @brief Get the user input and return
