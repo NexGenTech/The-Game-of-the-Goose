@@ -70,9 +70,12 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game game){
   if ((id_act = game_get_player_location(game)) != NO_ID){
 
     space_act = game_get_space(game, id_act);
-    id_back = space_get_north(space_act);
-    id_next = space_get_south(space_act);
-
+    if(space_get_north(space_act) != NO_ID) {
+      id_back = link_get_other(game_get_link(game, space_get_north(space_act)), id_act);
+    }
+    if(space_get_south(space_act) != NO_ID) {
+      id_next = link_get_other(game_get_link(game, space_get_south(space_act)), id_act);
+    }
     /*if (game_get_object_location(game) == id_back)
       obj='*';
     else
@@ -207,11 +210,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game game){
   /*sprintf(str,"\n");
   screen_area_puts(ge->descript, str);*/
 
-  if ((player_obj = player_get_object(game_get_player(game))) != NO_ID){
-    sprintf(str, " Player object: %s", object_get_name(game_get_object(game,player_obj)));
-    screen_area_puts(ge->descript, str);
-    sprintf(str, " ");
-    screen_area_puts(ge->descript, str);
+  for(int i = 0; i < n_objects ; i++) {
+    if ((player_obj = player_search_object(game_get_player(game), object_get_id(game_get_object_at(game, i)))) != NO_ID){
+      sprintf(str, " Player object: %s", object_get_name(game_get_object(game,player_obj)));
+      screen_area_puts(ge->descript, str);
+      sprintf(str, " ");
+      screen_area_puts(ge->descript, str);
+    }
   }
 
   /*sprintf(str,"\n");
