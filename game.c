@@ -14,9 +14,7 @@
 #include <string.h>
 #include "game_reader.h"
 
-#define N_CALLBACK 9            //The number of callbacks for the commands
-#define PLAYER_ID 24            //This is the player_id that the player is initialized with during the game creation by the game_create function
-#define OBJECT_ID 8             //This is the object_id that the object is initialized with during the game creation by the game_create function
+#define N_CALLBACK 11            //The number of callbacks for the commands
 
  struct _Game{
   Player* player;                        // A pointer to the player of the game
@@ -45,6 +43,8 @@ STATUS game_callback_drop(Game game);      //A callback for the DROP command
 STATUS game_callback_roll(Game game);      //A callback for the ROLL command
 STATUS game_callback_left(Game game);      //A callback for the LEFT command
 STATUS game_callback_right(Game game);     //A callback for the RIGHT command
+STATUS game_callback_move(Game game);      //A callback for the MOVE command
+STATUS game_callback_inspect(Game game);   //A callback for the INSPECT command
 
 static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_unknown,
@@ -55,7 +55,23 @@ static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_drop,
   game_callback_roll,
   game_callback_left,
-  game_callback_right};
+  game_callback_right,
+  game_callback_move,
+  game_callback_inspect};
+
+/**
+   Define the function type for the directions
+*/
+typedef Id (*direction_fn)(Space* space);
+
+/**
+   List of geters for each direction in a space
+*/
+static direction_fn space_direction_fn_list[4]={
+  space_get_north,
+  space_get_south,
+  space_get_east,
+  space_get_west};
 
 /**
    Private functions
@@ -570,4 +586,36 @@ STATUS game_callback_right(Game game){
   } else {
     return ERROR;
   }
+}
+
+STATUS game_callback_move(Game game) {
+
+  Space* space = game_get_space(game,game_get_player_location(game));
+
+  char dir[255];      // The direction of the move command
+  scanf("%s",dir);
+  DIRECTION d;
+
+  if((strcmp(dir, "n") == 0) || (strcmp(dir, "north") == 0)) {
+    d = N;
+  } else if((strcmp(dir, "e") == 0) || (strcmp(dir, "east") == 0)) {
+    d = E;
+  } else if((strcmp(dir, "s") == 0) || (strcmp(dir, "south") == 0)) {
+    d = S;
+  } else if((strcmp(dir, "w") == 0) || (strcmp(dir, "west") == 0)) {
+    d = W;
+  } else {return ERROR;}
+
+  Id direction = (*space_direction_fn_list[d])(space);
+
+  if(direction != NO_ID){
+    game_set_player_location(game, link_get_other(game_get_link(game, direction), space_get_id(space)));
+    return OK;
+  } else {
+    return ERROR;
+  }
+}
+
+STATUS game_callback_inspect(Game game) {
+
 }
