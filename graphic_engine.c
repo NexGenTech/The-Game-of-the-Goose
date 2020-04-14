@@ -57,6 +57,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game game){
   int last_die = -1;
   Space* space_act = NULL;
   char line[WORD_SIZE] = "";
+  char last_desc[WORD_SIZE] = "";
   char str[255];                //just a variable used for printing
   char dummie1[255] = "";            //just a variable used for printing
   char dummie2[255] = "";            //just a variable used for printing
@@ -224,6 +225,16 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game game){
 
   if ((last_die = die_get_last_roll(game_get_die(game))) != -1){
     sprintf(str, " Last die value: %d",last_die);
+    screen_area_puts(ge->descript, str);
+    sprintf(str, " ");
+    screen_area_puts(ge->descript, str);
+  }
+
+  strcpy(last_desc, game_get_last_description(game));
+  if((strlen(last_desc)) != 0) {
+    sprintf(str, " Description:");
+    screen_area_puts(ge->descript, str);
+    sprintf(str, " %s", last_desc);
     screen_area_puts(ge->descript, str);
     sprintf(str, " ");
     screen_area_puts(ge->descript, str);
