@@ -158,8 +158,8 @@ Game game_create() {
     game->links[i] = NULL;
   }
 
-  game->player = NULL;              //The player is always initialized with the PLAYER_ID
-  game->die = die_create(1);                            //The die is always initialized with the value 1
+  game->player = NULL;                 //The player is always initialized with the PLAYER_ID
+  game->die = die_create(1, 1, 6);     //The die is always initialized with the value 1
   game->last_cmd = NO_CMD;
   game->last_cmd_status = OK;
   game->last_desc[0] = '\0';
