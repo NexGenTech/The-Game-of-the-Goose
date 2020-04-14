@@ -19,6 +19,7 @@ STATUS game_reader_load_spaces(Game game, char* filename) {
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
+  char desc[WORD_SIZE] = "";
   char line1[WORD_SIZE] = "";
   char line2[WORD_SIZE] = "";
   char line3[WORD_SIZE] = "";
@@ -56,6 +57,8 @@ STATUS game_reader_load_spaces(Game game, char* filename) {
       strcpy(line2, toks);
       toks = strtok(NULL, "|");
       strcpy(line3, toks);
+      toks = strtok(NULL, "|");
+      strcpy(desc, toks);
 
 #ifdef DEBUG
       printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
@@ -71,6 +74,7 @@ STATUS game_reader_load_spaces(Game game, char* filename) {
        space_set_graphics_line(space, line1, 0);
        space_set_graphics_line(space, line2, 1);
        space_set_graphics_line(space, line3, 2);
+       space_set_description(space, desc);
        game_add_space(game, space);
       }
     }
@@ -90,6 +94,7 @@ STATUS game_reader_load_objects(Game game, char* filename){
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
+  char desc[WORD_SIZE] = "";
   char* toks = NULL;
   Id id = NO_ID, location = NO_ID;
   Object* object = NULL;
@@ -114,6 +119,8 @@ STATUS game_reader_load_objects(Game game, char* filename){
       strcpy(name, toks);
       toks = strtok(NULL, "|");
       location = atol(toks);
+      toks = strtok(NULL, "|");
+      strcpy(desc, toks);
 
     #ifdef DEBUG
       printf("Leido: %ld|%s|%ld|", id, name,location);
@@ -122,6 +129,7 @@ STATUS game_reader_load_objects(Game game, char* filename){
       object = object_create(id);
       if (object != NULL) {
        object_set_name(object, name);
+       object_set_description(object, desc);
        game_add_object(game, object);
       }
 
