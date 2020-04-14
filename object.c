@@ -17,7 +17,7 @@
 typedef struct _Object{
   Id id;                              // The Id of the object
   char name[WORD_SIZE + 1];           // The name of the object
-  char Description[WORD_SIZE + 1];    // A description of the object
+  char description[WORD_SIZE + 1];    // A description of the object
 }Object;
 
 

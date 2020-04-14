@@ -25,7 +25,7 @@ typedef struct _Space{
   Id west;                      // The Id of the space that this is linked in the west
   Set* objects;                 // The set of the Id's of the objects that are on this space
   char gdesc[3][8];             // An array of characters that hold the graphic description of the space
-  char Description[WORD_SIZE + 1];  // A description of the space
+  char description[WORD_SIZE + 1];  // A description of the space
 }Space;
 
 
