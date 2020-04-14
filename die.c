@@ -13,23 +13,23 @@
  #include <time.h>
  #include "die.h"
 
-Die* die_create(Id id){
+Die* die_create(Id id, int min, int max){
 
    Die *newDie = NULL;
 
-     newDie = (Die *) malloc(sizeof (Die));
+   newDie = (Die *) malloc(sizeof (Die));
 
-     if (newDie == NULL) {
+   if (newDie == NULL) {
        return NULL;
-     }
+   }
 
-     newDie->id = id;
+   newDie->id = id;
 
-     newDie->min = 1;
+   newDie->min = min;
 
-    newDie->max = 6;
+   newDie->max = max;
 
-    newDie->last_roll = -1;
+   newDie->last_roll = -1;
 
    return newDie;
  }

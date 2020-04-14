@@ -30,9 +30,11 @@
   * @date 25-02-2020
   *
   * @param id the id that the new die is going to have
+  * @param min the minimum value that the die can take
+  * @param max the maximum value that the die can take
   * @return a pointer to the new die
   */
- Die* die_create(Id id);
+ Die* die_create(Id id, int min, int max);
 
  /**
   * @brief Deatroys a die struct
