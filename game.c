@@ -345,7 +345,7 @@ int game_get_n_objects(Game game){
   return i;
 }
 
-STATUS game_set_description(Game* game, char* desc) {
+STATUS game_set_last_description(Game game, char* desc) {
 
   if(desc == NULL) {
     return ERROR;
@@ -356,7 +356,7 @@ STATUS game_set_description(Game* game, char* desc) {
   return OK;
 }
 
-char* game_get_description(Game* game) {
+char* game_get_last_description(Game game) {
   return game->last_desc;
 }
 
@@ -560,7 +560,7 @@ STATUS game_callback_drop(Game game){
 
   for(int i = 0; i < n_objects; i++) {
     Object* dummy = game_get_object_at(game, i);
-    if (strcpy(obj, object_get_name(dummy)) == 0) {
+    if (strcmp(obj, object_get_name(dummy)) == 0) {
       Id obj_id = object_get_id(dummy);
       if (player_search_object(game->player, obj_id) != NO_ID) {
         player_del_object(game->player, obj_id);
@@ -641,7 +641,7 @@ STATUS game_callback_inspect(Game game) {
   scanf("%s",target);
 
   if((strcmp(target, "s") == 0) || (strcmp(target, "space") == 0)) {
-    game_set_description(game, space_get_description(space));
+    game_set_last_description(game, space_get_description(space));
     return OK;
   } else {
     for(int i = 0; game->objects[i] != NULL; i++){
@@ -649,7 +649,7 @@ STATUS game_callback_inspect(Game game) {
         Object* obj = game_get_object_at(game, i);
         Id obj_id = object_get_id(obj);
         if((player_search_object(game->player, obj_id) != NO_ID) || (space_contain_object(space, obj_id) == TRUE)) {
-          game_set_description(game, object_get_description(obj));
+          game_set_last_description(game, object_get_description(obj));
           return OK;
         }
       }

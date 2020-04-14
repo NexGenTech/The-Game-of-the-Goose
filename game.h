@@ -294,31 +294,31 @@ STATUS game_add_link(Game game, Link* link);
 STATUS game_add_player(Game game, Player* player);
 
 /**
- * @brief Sets the description of the game
+ * @brief Sets the last_description of the game
  *
- * Gets a string as input and sets it as the game's description
+ * Gets a string as input and sets it as the game's last_description
  *
  * @date 05-04-2020
  * @author Evangelos Lazarakis
  *
- * @param game the game whose description will change
+ * @param game the game whose last_description will change
  * @param desc the new description of the game
  * @return a STATUS code, ERROR in case of an error or OK
  */
-STATUS game_set_description(Game* game, char* desc);
+STATUS game_set_last_description(Game game, char* desc);
 
 /**
- * @brief Gets the description of the game
+ * @brief Gets the last_description of the game
  *
- * Returns a game's description
+ * Returns a game's last_description
  *
  * @date 05-04-2020
  * @author Evangelos Lazarakis
  *
- * @param game the object whose description will be returned
+ * @param game the object whose last_description will be returned
  * @return a string with the object's description
  */
-char* game_get_description(Game* game);
+char* game_get_last_description(Game game);
 
 /**
  * @brief Gets a link of the game
