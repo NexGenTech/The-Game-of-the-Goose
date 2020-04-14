@@ -1,28 +1,28 @@
-#s:1|Goose 1|-1|-1|1|-1|       |       |       |
-#s:2|Goose 2|1|-1|2|-1|       |       |       |
-#s:3|Goose 3|2|-1|3|-1|       |       |       |
-#s:4|Goose 4|3|-1|4|-1|       |       |       |
-#s:5|Goose 5|4|25|5|-1|       |<O)__/ | \_-/  |
-#s:6|Goose 6|5|-1|6|-1|       |       |       |
-#s:7|Goose 7|6|-1|7|-1|       |       |       |
-#s:8|Goose 8|7|30|8|-1|  ___  | / _ \ |/ / \ \|
-#s:9|Goose 9|8|26|9|-1|       |<O)__/ | \_-/  |
-#s:10|Goose 10|9|-1|10|-1|       |       |       |
-#s:11|Goose 11|10|-1|11|-1|       |       |       |
-#s:12|Goose 12|11|-1|12|-1|       |       |       |
-#s:13|Goose 13|12|27|13|-1|       |<O)__/ | \_-/  |
-#s:14|Goose 14|13|-1|14|-1|       |       |       |
-#s:15|Goose 15|14|-1|15|-1|       |       |       |
-#s:16|Goose 16|15|30|16|30|  ___  | / _ \ |/ / \ \|
-#s:17|Goose 17|16|28|17|-1|       |<O)__/ | \_-/  |
-#s:18|Goose 18|17|-1|18|-1|       |       |       |
-#s:19|Goose 19|18|-1|19|-1|       |       |       |
-#s:20|Goose 20|19|-1|20|-1|       |       |       |
-#s:21|Goose 21|20|29|21|-1|       |<O)__/ | \_-/  |
-#s:22|Goose 22|21|31|22|31|  ___  | (O O) |  \m/  |
-#s:23|Goose 23|22|-1|23|-1|       |       |       |
-#s:24|Goose 24|23|-1|24|-1|       |       |       |
-#s:25|Goose 25|24|-1|-1|-1|       |       |       |
+#s:1|Goose 1|-1|-1|1|-1|       |       |       |Goose 1: nothing|
+#s:2|Goose 2|1|-1|2|-1|       |       |       |Goose 2: nothing|
+#s:3|Goose 3|2|-1|3|-1|       |       |       |Goose 3: nothing|
+#s:4|Goose 4|3|-1|4|-1|       |       |       |Goose 4: nothing|
+#s:5|Goose 5|4|25|5|-1|       |<O)__/ | \_-/  |Goose 5: A Goose|
+#s:6|Goose 6|5|-1|6|-1|       |       |       |Goose 6: nothing|
+#s:7|Goose 7|6|-1|7|-1|       |       |       |Goose 7: nothing|
+#s:8|Goose 8|7|30|8|-1|  ___  | / _ \ |/ / \ \|Goose 8: A Bridge|
+#s:9|Goose 9|8|26|9|-1|       |<O)__/ | \_-/  |Goose 9: A Goose|
+#s:10|Goose 10|9|-1|10|-1|       |       |       |Goose 10: nothing|
+#s:11|Goose 11|10|-1|11|-1|       |       |       |Goose 11: nothing|
+#s:12|Goose 12|11|-1|12|-1|       |       |       |Goose 12: nothing|
+#s:13|Goose 13|12|27|13|-1|       |<O)__/ | \_-/  |Goose 13: A Goose|
+#s:14|Goose 14|13|-1|14|-1|       |       |       |Goose 14: nothing|
+#s:15|Goose 15|14|-1|15|-1|       |       |       |Goose 15: nothing|
+#s:16|Goose 16|15|30|16|30|  ___  | / _ \ |/ / \ \|Goose 16: A Bridge|
+#s:17|Goose 17|16|28|17|-1|       |<O)__/ | \_-/  |Goose 17: A Goose|
+#s:18|Goose 18|17|-1|18|-1|       |       |       |Goose 18: nothing|
+#s:19|Goose 19|18|-1|19|-1|       |       |       |Goose 19: nothing|
+#s:20|Goose 20|19|-1|20|-1|       |       |       |Goose 20: nothing|
+#s:21|Goose 21|20|29|21|-1|       |<O)__/ | \_-/  |Goose 21: A Goose|
+#s:22|Goose 22|21|31|22|31|  ___  | (O O) |  \m/  |Goose 22: Death |
+#s:23|Goose 23|22|-1|23|-1|       |       |       |Goose 23: nothing|
+#s:24|Goose 24|23|-1|24|-1|       |       |       |Goose 24: nothing|
+#s:25|Goose 25|24|-1|-1|-1|       |       |       |Goose 25: nothing|
 #l:1|Link 1|1|2|0|
 #l:2|Link 2|2|3|0|
 #l:3|Link 3|3|4|0|
@@ -55,3 +55,7 @@
 #l:30|Link 30|8|16|0|
 #l:31|Link 31|22|1|0|
 #p:24|ply1|1|1|
+#o:1|O1|1|Object 1|
+#o:2|O2|2|Object 2|
+#o:3|O3|4|Object 3|
+#o:4|O4|4|Object 4|
