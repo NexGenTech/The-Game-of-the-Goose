@@ -36,6 +36,8 @@ Object* object_create(Id id){
 
     newObject->name[0] = '\0';
 
+    newObject->description[0] = '\0';
+
   return newObject;
 }
 
@@ -93,5 +95,5 @@ char* object_get_description(Object* object) {
 
 void object_print(Object* object){
 
-  printf("The object with id %ld and name %s\n",object->id,object->name);
+  printf("The object with id %ld, name %s  and  description %s\n",object->id,object->name, object->description);
 }

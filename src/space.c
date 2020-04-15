@@ -292,5 +292,8 @@ STATUS space_print(Space* space) {
     printf("\t%s\n",space_get_graphics_line(space,i));
   }
 
+  fprintf(stdout, "---> Space Description :\n");
+  printf("\t%s\n", space_get_description(space));
+
   return OK;
 }
