@@ -55,7 +55,7 @@
 #l:30|Link 30|8|16|0|
 #l:31|Link 31|22|1|0|
 #p:24|ply1|1|1|
-#o:1|O1|1|Object 1|
-#o:2|O2|2|Object 2|
-#o:3|O3|4|Object 3|
-#o:4|O4|4|Object 4|
+#o:1|Bike|1|It's just a Bike|
+#o:2|Key|2|It's just Key|
+#o:3|Pen|4|It's just a Pen|
+#o:4|Gun|4|It's just GUN|
