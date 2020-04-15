@@ -14,7 +14,7 @@ int main(void){
 
   printf("This is the start of the die test\n");
 
-  Die* die = die_create(1);
+  Die* die = die_create(1, 1, 6);
 
   die_roll(die);
 
