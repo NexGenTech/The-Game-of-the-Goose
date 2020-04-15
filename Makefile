@@ -1,23 +1,34 @@
 #paths
 INCLUDE = include
-SOURCE = src
-OBJS = obj
+OBJDIR = obj
+SRCDIR = src
 
 # compiler
 CC = gcc
+
+# Project name
+PROJECT = goose_game
 
 #flags
 CFLAGS = -Wall -g -pedantic -I$(INCLUDE)
 VFLAGS = --leak-check=full -v
 
-OB = $(OBJS)/space.o $(OBJS)/command.o $(OBJS)/screen.o $(OBJS)/graphic_engine.o $(OBJS)/game.o $(OBJS)/object.o $(OBJS)/player.o $(OBJS)/game_reader.o $(OBJS)/die.o $(OBJS)/set.o $(OBJS)/inventory.o $(OBJS)/link.o $(OBJS)/game_loop.o
+SRCS    = $(shell find $(SRCDIR) -name '*.c')
+OBJS    = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
+TESTS   = $(shell find $(OBJDIR) -name '*_test.o')
+TEST_EXEC = $(patsubst $(OBJDIR)/%_test.o, %_test, $(TESTS))
 
-all: build goose_game
+all: build tests
 
-build: $(OB)
+build: $(OBJS)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) -c $< -o $@ $(CFLAGS)
 
-$(OBJS)/%.o: $(SOURCE)/%.c
-	$(CC) -c $< $(CFLAGS) -o $@
+tests: $(TEST_EXEC)
+%_test: $(OBJDIR)/%.o
+	 $(CC) -o $@ $(CFLAGS) $<
 
-goose_game: $(OB)
-	$(CC) -o $@ $< $(CFLAGS)
+
+
+clean:
+	rm -f $(OBJS)
