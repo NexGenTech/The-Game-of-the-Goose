@@ -9,7 +9,7 @@ CC = gcc
 
 # Executable names
 GAME = goose_game
-TESTS = player_test die_test set_test link_test inventory_test
+TESTS = player_test die_test set_test link_test inventory_test space_test object_test
 
 #flags
 CFLAGS = -Wall -g -pedantic -I$(INCLUDE)
@@ -33,6 +33,8 @@ DIE_TEST_OBJ = $(OBJDIR)/die_test.o $(OBJDIR)/die.o
 SET_TEST_OBJ = $(OBJDIR)/set_test.o $(OBJDIR)/set.o
 LINK_TEST_OBJ = $(OBJDIR)/link_test.o $(OBJDIR)/link.o
 INV_TEST_OBJ = $(OBJDIR)/inventory_test.o $(OBJDIR)/inventory.o $(OBJDIR)/set.o
+SP_TEST_OBJ = $(OBJDIR)/space_test.o $(OBJDIR)/space.o $(OBJDIR)/set.o
+OB_TEST_OBJ = $(OBJDIR)/object_test.o $(OBJDIR)/object.o
 
 
 all: build tests $(GAME)
@@ -57,6 +59,12 @@ link_test: $(LINK_TEST_OBJ)
 
 inventory_test: $(INV_TEST_OBJ)
 	$(CC) -o $@ $(INV_TEST_OBJ) $(CFLAGS)
+
+space_test: $(SP_TEST_OBJ)
+	$(CC) -o $@ $(SP_TEST_OBJ) $(CFLAGS)
+
+object_test: $(OB_TEST_OBJ)
+	$(CC) -o $@ $(OB_TEST_OBJ) $(CFLAGS)
 
 build: $(OBJS)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
