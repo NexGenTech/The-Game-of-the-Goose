@@ -2,6 +2,7 @@
 INCLUDE = include
 OBJDIR = obj
 SRCDIR = src
+DOC = doc
 
 # compiler
 CC = gcc
@@ -70,3 +71,6 @@ run: $(GAME)
 
 valgrind: $(GAME)
 	valgrind $(VFLAGS) ./$(GAME) $(ARGS)
+
+doxygen:
+	doxygen Doxyfile
