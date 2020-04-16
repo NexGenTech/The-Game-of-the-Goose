@@ -19,6 +19,8 @@ typedef struct _Graphic_engine Graphic_engine;
 /**
  * @brief Creates a Graphic_engine struct
  *
+ * Creates a Graphic_engine struct and returns it
+ *
  * @author Profesores PPROG
  * @date 18-01-2017
  *
@@ -29,6 +31,8 @@ Graphic_engine* graphic_engine_create();
 /**
  * @brief Destroys a Graphic_engine struct
  *
+ * Gets a Graphic_engine as input and deallocates it's memory
+ *
  * @author Profesores PPROG
  * @date 18-01-2017
  *
@@ -38,6 +42,9 @@ void graphic_engine_destroy(Graphic_engine *ge);
 
 /**
  * @brief Prints a game onto the terminal
+ *
+ * Gets a Graphic_engine and a game as input and prints the game into the screen
+ *
  * @author Profesores PPROG
  * @date 18-01-2017
  *
@@ -45,6 +52,5 @@ void graphic_engine_destroy(Graphic_engine *ge);
  * @param game the game that is going to be printed
  */
 void graphic_engine_paint_game(Graphic_engine *ge, Game game);
-void graphic_engine_write_command(Graphic_engine *ge, char *str);
 
 #endif

@@ -38,6 +38,9 @@ char *__data;
 /****************************/
 /**
  * @brief Determines if the cursor is out of an area
+ *
+ * Gets an area as input and returns if the cursor in it is out of it's bounds
+ *
  * @author Profesores PPROG
  * @date 11-01-2017
  *
@@ -49,6 +52,8 @@ int  screen_area_cursor_is_out_of_bounds(Area* area);
 /**
  * @brief Scrolls up
  *
+ * Gets an area as input and scrolls all the way uo
+ *
  * @author Profesores PPROG
  * @date 11-01-2017
  *
@@ -58,6 +63,8 @@ void screen_area_scroll_up(Area* area);
 
 /**
  * @brief Replaces special characters in a string with ?
+ *
+ * Gets a string as input and replaces all the special characters in it with ?
  *
  * @author Profesores PPROG
  * @date 11-01-2017

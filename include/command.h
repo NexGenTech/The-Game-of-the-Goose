@@ -19,8 +19,9 @@ typedef enum enum_CmdType {CMDS, CMDL} T_CmdType;           //An enumeration for
 typedef enum enum_Command {NO_CMD = -1, UNKNOWN, EXIT, NEXT, BACK, TAKE, DROP, ROLL, LEFT, RIGHT, MOVE, INSPECT} T_Command;           //An enumeration for all the commands
 
 /**
- * @brief Get the user input and return
- * which command the user wants to execute
+ * @brief Gets command the user wants to execute
+ *
+ * Gets the user's input and returns the command he wants to execute
  *
  * @author Profesores PPROG
  * @date 19-12-2014

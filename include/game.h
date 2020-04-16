@@ -72,6 +72,8 @@ STATUS game_update(Game game, T_Command cmd);
 /**
  * @brief Destroys a game
  *
+ * Gets a game as input and deallocates it's memory
+ *
  * @author Profesores PPROG
  * @date 13-01-2015
  *
@@ -95,6 +97,7 @@ BOOL game_is_over(Game game);
 /**
  * @brief Prints the data of a game
  *
+ * Gets a game as input and prints it's fields
  *
  * @author Profesores PPROG
  * @date 13-01-2015
@@ -177,7 +180,7 @@ Player* game_get_player(Game game);
 /**
  * @brief Gets the location Id of the player
  *
- * Returns the location Id of the player
+ * Gets a game as input and returns the location Id of the player
  *
  * @author Evangelos Lazarakis
  * @date 11-02-2020
@@ -190,7 +193,7 @@ Id game_get_player_location(Game game);
 /**
  * @brief Gets the location Id of an object
  *
- * Returns the location Id of an object
+ * Gets a game and an object Id as input and returns the location Id of that object
  *
  * @author Evangelos Lazarakis
  * @date 29-02-2020
@@ -204,6 +207,8 @@ Id game_get_object_location(Game game, Id object_id);
 /**
  * @brief Gets the number of objects in the game
  *
+ * Gets a game as input and returns the number of it's objects
+ *
  * @author Evangelos Lazarakis
  * @date 29-02-2020
  *
@@ -215,6 +220,7 @@ int game_get_n_objects(Game game);
 /**
  * @brief Gets the last command that was executed in the game
  *
+ * Gets a game as input and returns the last command executed
  *
  * @author Profesores PPROG
  * @date 13-01-2015
@@ -227,6 +233,7 @@ T_Command game_get_last_command(Game game);
 /**
  * @brief Gets the last command's status that was executed in the game
  *
+ * Gets a game as input and returns the status of the last command executed
  *
  * @author Evangelos Lazarakis
  * @date 29-02-2020
@@ -284,6 +291,8 @@ STATUS game_add_link(Game game, Link* link);
 /**
  * @brief Adds a player to the game
  *
+ * Gets a game and a player pointer as input and adds the player to the game
+ *
  * @author Evangelos Lazarakis
  * @date 30-03-2020
  *
@@ -310,7 +319,7 @@ STATUS game_set_last_description(Game game, char* desc);
 /**
  * @brief Gets the last_description of the game
  *
- * Returns a game's last_description
+ * Gets a game as input and returns a it's last_description
  *
  * @date 05-04-2020
  * @author Evangelos Lazarakis
@@ -323,7 +332,7 @@ char* game_get_last_description(Game game);
 /**
  * @brief Gets a link of the game
  *
- * Gets the game and the link;s Id as input and returns a pointer to
+ * Gets the game and the link's Id as input and returns a pointer to
  * that link
  *
  * @author Evangelos Lazarakis

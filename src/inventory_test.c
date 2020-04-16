@@ -1,3 +1,12 @@
+/**
+ * @brief It tests the inventory module
+ *
+ *@file die_test.c
+ *@author Evangelos Lazarakis
+ *@date 18/03/2020
+ *
+ */
+
 #include <stdio.h>
 #include "inventory.h"
 

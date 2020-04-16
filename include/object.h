@@ -17,6 +17,7 @@
 
 /**
  * @brief the Object structure
+ *
  * Stores the data of the Object
  */
 typedef struct _Object Object;
@@ -24,6 +25,8 @@ typedef struct _Object Object;
 
 /**
  * @brief Creates a object struct with the Id that is given as input
+ *
+ * Gets an Id as input, allocates memory for an object and returns a pointer to it
  *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
@@ -36,6 +39,8 @@ Object* object_create(Id id);
 /**
  * @brief Deatroys a object struct
  *
+ * Gets an object as input and deallocates it's memory
+ *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
  *
@@ -46,6 +51,8 @@ STATUS object_destroy(Object* object);
 
 /**
  * @brief Get the Id of a object
+ *
+ * Gets an object as input and returns it's Id
  *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
@@ -58,6 +65,8 @@ Id object_get_id(Object* object);
 /**
  * @brief Set the name of a object
  *
+ * Gets an object and an Id as input and sets it as the object's Id
+ *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
  *
@@ -68,6 +77,8 @@ STATUS object_set_name(Object* object, char* name);
 
 /**
  * @brief Get the name of a object
+ *
+ * Gets an object as input and returns it's name
  *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
@@ -94,7 +105,7 @@ STATUS object_set_description(Object* object, char* desc);
 /**
  * @brief Gets the description of the object
  *
- * Returns a object's description
+ * Gets an object as input and returns it's description
  *
  * @date 05-04-2020
  * @author Evangelos Lazarakis
@@ -106,6 +117,8 @@ char* object_get_description(Object* object);
 
 /**
  * @brief Print the data of a object
+ *
+ * Gets an object as input and prints it's fields
  *
  * @author Evangelos Lazarakis
  * @date 10-02-2020

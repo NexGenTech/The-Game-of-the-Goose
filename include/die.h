@@ -24,7 +24,9 @@
  }Die;
 
  /**
-  * @brief Creates a die struct with the Id that is given as input
+  * @brief Creates a die
+  *
+  * Gets an Id, a min value and a max value nad returns a pointer to a die
   *
   * @author Evangelos Lazarakis
   * @date 25-02-2020
@@ -37,7 +39,9 @@
  Die* die_create(Id id, int min, int max);
 
  /**
-  * @brief Deatroys a die struct
+  * @brief Destroys a die struct
+  *
+  * Gets a die as input and deallocates it's memory
   *
   * @author Evangelos Lazarakis
   * @date 25-02-2020
@@ -50,6 +54,8 @@
  /**
   * @brief Set the last roll of a die
   *
+  * Gets a die pointer and the last_roll value and updates the die
+  *
   * @author Evangelos Lazarakis
   * @date 25-02-2020
   *
@@ -60,7 +66,9 @@
  STATUS die_set_last_roll(Die* die, int last_roll);
 
  /**
-  * @brief Set the last roll of a die
+  * @brief Get the last roll of a die
+  *
+  * Gets a die pointer as input and returns it's last_roll value
   *
   * @author Evangelos Lazarakis
   * @date 25-02-2020
@@ -73,17 +81,21 @@
 /**
  * @brief Roll the die
  *
+ * Gets a die pointer as input, rolls it and updates it's last_roll value
+ *
  * @author Evangelos Lazarakis
  * @date 25-02-2020
  *
  * @param die  the die that is going to be rolled
-* @return a STATUS code, ERROR if any error occures or OK
+ * @return a STATUS code, ERROR if any error occures or OK
  */
  STATUS die_roll(Die* die);
 
  /**
   * @brief Print the data of a die
   *
+  * Gets a die pointer as input and prints all it's fields
+  * 
   * @author Evangelos Lazarakis
   * @date 25-02-2020
   *

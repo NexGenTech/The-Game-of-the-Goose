@@ -15,6 +15,8 @@
 /**
  * @brief Loads spaces from a file
  *
+ * Gest a game and a filename as input and adds the spaces it read from the file
+ *
  * @author Adam Mahjoub
  * @date 13-02-2020
  *
@@ -26,6 +28,8 @@ STATUS game_reader_load_spaces(Game game, char* filename);
 
 /**
  * @brief Loads objects from a file
+ *
+ * Gest a game and a filename as input and adds the objects it read from the file
  *
  * @author Adam Mahjoub
  * @date 13-02-2020
@@ -39,6 +43,8 @@ STATUS game_reader_load_objects(Game game, char* filename);
 /**
  * @brief Loads players from a file
  *
+ * Gest a game and a filename as input and adds the players it read from the file
+ *
  * @author Evanglelos Lazarakis
  * @date 28-03-2020
  *
@@ -50,6 +56,8 @@ STATUS game_reader_load_players(Game game, char* filename);
 
 /**
  * @brief Loads links from a file
+ *
+ * Gest a game and a filename as input and adds the links it read from the file 
  *
  * @author Evanglelos Lazarakis
  * @date 28-03-2020

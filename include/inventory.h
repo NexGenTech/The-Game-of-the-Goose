@@ -14,12 +14,15 @@
 
  /**
   *@brief The Inventory structure
+  *
   * Stores the Id of many Object structs
   */
  typedef struct _Inventory Inventory;
 
  /**
   * @brief Creates a inventory struct
+  *
+  * Allocates memory for an Inventory and returns a pointer to that Invenotry
   *
   * @author Evangelos Lazarakis
   * @date 27-03-2020
@@ -29,7 +32,9 @@
  Inventory* inventory_create();
 
  /**
-  * @brief Deatroys a inventory struct
+  * @brief Destroys a inventory struct
+  *
+  * Gets an inventory as input and deallocates it's memory
   *
   * @author Evangelos Lazarakis
   * @date 27-03-2020
@@ -42,6 +47,8 @@
  /**
   * @brief Adds an object to the inventory
   *
+  * Gets an inventory and an Id as input and adds it to the inventory
+  *
   * @author Evangelos Lazarakis
   * @date 27-03-2020
   *
@@ -53,6 +60,8 @@
  /**
   * @brief Deletes an object from the inventory
   *
+  * Gets an inventory and an Id as input and removes it from the inventory
+  *
   * @author Evangelos Lazarakis
   * @date 27-03-2020
   *
@@ -63,6 +72,8 @@
 
  /**
   * @brief Gets the object Id in a certain position in the ids array
+  *
+  * Gets an inventory and an index as input nad returns the Id that is stored in that index in the inventory
   *
   * @author Evangelos Lazarakis
   * @date 27-03-2020
@@ -76,16 +87,20 @@
  /**
   * @brief Get the max number of objects that can be added to the Inventory
   *
+  * Gets an inventory as input and returns the maximum number of Ids that it can contain
+  *
   * @author Evangelos Lazarakis
   * @date 27-03-2020
   *
-  * @param inventory the inventory whose max number of objects will be returned
+  * @param inventory the inventory whose max number of Ids will be returned
   * @return the max max number of objects of the Inventory
   */
   int inventory_get_max_objects(Inventory* inventory);
 
   /**
    * @brief Set the max number of objects that can be added to the Inventory
+   *
+   * Gets an inventory and an integer as input and sets the int as the maximum number of Ids that it can contain
    *
    * @author Evangelos Lazarakis
    * @date 27-03-2020
@@ -99,6 +114,8 @@
   /**
    * @brief Search if an object exists in the inventory
    *
+   * Gets an inventory and an Id as input and returns if the inventory contains it or not
+   *
    * @author Evangelos Lazarakis
    * @date 26-02-2020
    *
@@ -111,6 +128,8 @@
   /**
    * @brief Checks if an inventory is full or not
    *
+   * Gets an inventory as input and returns if it has free space or not
+   *
    * @author Evangelos Lazarakis
    * @date 30-03-2020
    *
@@ -121,6 +140,8 @@
 
  /**
   * @brief Print the data of a inventory
+  *
+  * Gets an inventory as input and prints its fields
   *
   * @author Evangelos Lazarakis
   * @date 27-03-2020

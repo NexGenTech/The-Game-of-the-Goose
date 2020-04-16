@@ -1,9 +1,9 @@
-/** 
+/**
  * @brief It defines a screen
- * 
+ *
  * @file screen.h
  * @author Profesores PPROG
- * @version 1.0 
+ * @version 1.0
  * @date 11-01-2017
  * @copyright GNU Public License
  */
@@ -50,6 +50,8 @@ void  screen_gets(char *str);
 /**
  * @brief Initializes a new created area
  *
+ * Gets four integers as the the dimmensions of the area as input, allocates memory for it and returns a pointer to it
+ *
  * @author Profesores PPROG
  * @date 11-01-2017
  *
@@ -64,9 +66,11 @@ Area* screen_area_init(int x, int y, int width, int height);
 /**
  * @brief Destroys an area
  *
+ * Gets an area as input and deallocates it's memory
+ *
  * @author Profesores PPROG
  * @date 11-01-2017
- * 
+ *
  * @param area the area that is going to be destroyed
  */
 void  screen_area_destroy(Area* area);
@@ -74,9 +78,11 @@ void  screen_area_destroy(Area* area);
 /**
  * @brief Clears an area
  *
+ * Gets an area as input and clears it
+ *
  * @author Profesores PPROG
  * @date 11-01-2017
- * 
+ *
  * @param area the area that is going to be cleared
  */
 void  screen_area_clear(Area* area);
@@ -84,9 +90,11 @@ void  screen_area_clear(Area* area);
 /**
  * @brief Resets the cursor
  *
+ * Gets an area as input and resets the cursor in it
+ *
  * @author Profesores PPROG
  * @date 11-01-2017
- * 
+ *
  * @param area the area in which the cursor is going to be reset
  */
 void  screen_area_reset_cursor(Area* area);

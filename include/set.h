@@ -16,12 +16,15 @@
 
 /**
  *@brief The Set structure
+ *
  * Stores the Id of many Object structs
  */
 typedef struct _Set Set;
 
 /**
  * @brief Creates a set struct
+ *
+ * Allocates memory for a set and returns a pointer to it
  *
  * @author Evangelos Lazarakis
  * @date 26-02-2020
@@ -31,7 +34,9 @@ typedef struct _Set Set;
 Set* set_create();
 
 /**
- * @brief Deatroys a set struct
+ * @brief Destroys a set struct
+ *
+ * Gets a set as input and deallocates it's memory
  *
  * @author Evangelos Lazarakis
  * @date 26-02-2020
@@ -44,6 +49,8 @@ STATUS set_destroy(Set* set);
 /**
  * @brief Adds an Id to the set
  *
+ * Gets a set and an Id as input and adds it in the set
+ *
  * @author Evangelos Lazarakis
  * @date 26-02-2020
  *
@@ -55,6 +62,8 @@ STATUS set_add(Set* set, Id id);
 /**
  * @brief Deletes an Id from the set
  *
+ * Gets a set and an Id as input and removes it from the set
+ *
  * @author Evangelos Lazarakis
  * @date 26-02-2020
  *
@@ -65,6 +74,8 @@ STATUS set_del(Set* set, Id id);
 
 /**
  * @brief Search if an Id exists in the set
+ *
+ * Gets a set and an Id as input and returns if it is in the set
  *
  * @author Evangelos Lazarakis
  * @date 26-02-2020
@@ -78,6 +89,8 @@ Id set_search_id(Set* set, Id id);
 /**
 * @brief Gets the number of Id's of the set
 *
+* Gets a set as input and returns the number of it's total Ids
+*
 * @author Evangelos Lazarakis
 * @date 26-02-2020
 *
@@ -88,6 +101,8 @@ int set_get_n_ids(Set* set);
 
 /**
  * @brief Gets the Id in a certain position in the ids array
+ *
+ * Gets a set and an index as input and returns the Id that is in that index in the set
  *
  * @author Evangelos Lazarakis
  * @date 26-02-2020
@@ -100,6 +115,8 @@ int set_get_n_ids(Set* set);
 
 /**
  * @brief Print the data of a set
+ *
+ * Gets a set as input and prints it's fields
  *
  * @author Evangelos Lazarakis
  * @date 26-02-2020

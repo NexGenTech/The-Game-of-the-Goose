@@ -21,12 +21,15 @@ typedef enum {
 
 /**
  *@brief The Link structure
+ *
  * Stores linking between Spaces
  */
 typedef struct _Link Link;
 
 /**
  * @brief Creates a link struct
+ *
+ * Gets an Id as input, allocates memory for a link with this Id and returns a pointer to it
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
@@ -37,7 +40,9 @@ typedef struct _Link Link;
 Link* link_create(Id id);
 
 /**
- * @brief Deatroys a link struct
+ * @brief Destroys a link struct
+ *
+ * Gets a link as input and deallocates it's memory
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
@@ -49,6 +54,8 @@ STATUS link_destroy(Link* link);
 
 /**
  * @brief Set the name of a link
+ *
+ * Gets an inventory and a string as input and sets the string as the name of the link
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
@@ -62,6 +69,8 @@ STATUS link_set_name(Link* link, char* name);
 /**
  * @brief Get the name of a link
  *
+ * Gets an inventory as input and returns it's name
+ *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
  *
@@ -73,6 +82,8 @@ const char* link_get_name(Link* link);
 /**
  * @brief Get the Id of a link
  *
+ * Gets an inventory as input and returns it's Id
+ *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
  *
@@ -82,7 +93,9 @@ const char* link_get_name(Link* link);
 Id link_get_id(Link* link);
 
 /**
- * @ Get the status of a link
+ * @brief Get the status of a link
+ *
+ * Gets an inventory as input and returns it's status
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
@@ -93,7 +106,9 @@ Id link_get_id(Link* link);
 LINK_STATUS link_get_status(Link* link);
 
 /**
- * @ Set the status of a link
+ * @brief Set the status of a link
+ *
+ * Gets an inventory and a status as input and updates the status of the link
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
@@ -107,6 +122,8 @@ STATUS link_set_status(Link* link, LINK_STATUS status);
 /**
  * @brief Get the id of the first space of the link
  *
+ * Gets an inventory as input and returns the Id of the first space
+ *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
  *
@@ -116,6 +133,8 @@ Id link_get_space_one_id(Link* link);
 
 /**
  * @brief Get the id of the second space of the link
+ *
+ * Gets an inventory as input and returns the Id of the second space
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
@@ -127,6 +146,8 @@ Id link_get_space_two_id(Link* link);
 /**
  * @brief Set the id of the first space of the link
  *
+ * Gets an inventory and an Id as input and sets it as the Id of the link's first space
+ *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
  *
@@ -137,6 +158,8 @@ STATUS link_set_space_one_id(Link* link, Id id);
 
 /**
  * @brief Set the id of the second space of the link
+ *
+ * Gets an inventory and an Id as input and sets it as the Id of the link's second space
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
@@ -150,6 +173,8 @@ STATUS link_set_space_two_id(Link* link, Id id);
  * @brief Gets one of the space Ids in a link and
  * returns the other one
  *
+ * Gets an inventory and an Id as input and returns the Id of the other space
+ *
  * @author Evangelos Lazarakis
  * @date 28-03-2020
  *
@@ -161,6 +186,8 @@ Id link_get_other(Link* link, Id space);
 
 /**
  * @brief Print the data of a link
+ *
+ * Gets an inventory as input and prints it's fields
  *
  * @author Evangelos Lazarakis
  * @date 28-03-2020

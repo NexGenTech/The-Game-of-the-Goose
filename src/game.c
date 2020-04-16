@@ -111,6 +111,8 @@ Id game_get_object_id_at(Game game, int position);
 /**
  * @brief Sets the player's location Id in a game
  *
+ * Gets a game and an Id as input and sets it as the player's locations
+ *
  * @author Evangelos Lazarakis
  * @date 10-02-2020
  *
