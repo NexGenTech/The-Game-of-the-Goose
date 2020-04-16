@@ -1,9 +1,9 @@
-/** 
+/**
  * @brief It implements a screen
- * 
+ *
  * @file screen.h
  * @author Profesores PPROG
- * @version 1.0 
+ * @version 1.0
  * @date 11-01-2017
  * @copyright GNU Public License
  */
@@ -17,7 +17,7 @@
 #pragma GCC diagnostic ignored "-Wpedantic"
 
 #define ROWS 32                           //The maximum number of rows
-#define COLUMNS 80                        //The maximum number of columns
+#define COLUMNS 100                       //The maximum number of columns
 #define TOTAL_DATA (ROWS * COLUMNS) + 1   //The maximum number of printed data
 
 #define BG_CHAR '~'                       //The ~ character
@@ -40,7 +40,7 @@ char *__data;
  * @brief Determines if the cursor is out of an area
  * @author Profesores PPROG
  * @date 11-01-2017
- * 
+ *
  * @param area the area in which the cursor is checked if it's out of bounds
  * @return 1 if the cursor is out of bounds , otherwise 0
  */
@@ -51,7 +51,7 @@ int  screen_area_cursor_is_out_of_bounds(Area* area);
  *
  * @author Profesores PPROG
  * @date 11-01-2017
- * 
+ *
  * @param area
  */
 void screen_area_scroll_up(Area* area);
@@ -61,7 +61,7 @@ void screen_area_scroll_up(Area* area);
  *
  * @author Profesores PPROG
  * @date 11-01-2017
- * 
+ *
  * @param str the string in which special characters are being replaced
  */
 void screen_utils_replaces_special_chars(char* str);
@@ -90,11 +90,11 @@ void screen_paint(){
   int i=0;
 
   memset(dest, 0, COLUMNS + 1);
-  
+
   if (__data){
     /* puts(__data); */ /*Dump data directly to the terminal*/
     /*It works fine if the terminal window has the right size*/
-    
+
     puts("\033[2J"); /*Clear the terminal*/
     for (src=__data; src < (__data + TOTAL_DATA - 1); src+=COLUMNS){
       memcpy(dest, src, COLUMNS);
@@ -141,7 +141,7 @@ void screen_area_clear(Area* area){
 
   if (area){
     screen_area_reset_cursor(area);
-    
+
     for (i=0; i < area->height; i++)
       memset(ACCESS(area->cursor, 0, i), (int) FG_CHAR, (size_t) area->width);
   }
@@ -158,7 +158,7 @@ void screen_area_puts(Area* area, char *str){
 
   if (screen_area_cursor_is_out_of_bounds(area))
     screen_area_scroll_up(area);
-  
+
   screen_utils_replaces_special_chars(str);
 
   for (ptr = str; ptr < (str + strlen(str)); ptr+=area->width){
