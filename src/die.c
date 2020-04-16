@@ -38,7 +38,7 @@ Die* die_create(Id id, int min, int max){
 
 STATUS die_destroy(Die* die) {
   if (!die) {
-   return ERROR;
+    return ERROR;
   }
 
   free(die);
@@ -49,11 +49,11 @@ STATUS die_destroy(Die* die) {
 
 STATUS die_set_last_roll(Die* die, int last_roll) {
   if (!die || !last_roll) {
-   return ERROR;
+    return ERROR;
   }
 
   if (!(die->last_roll = last_roll)) {
-   return ERROR;
+    return ERROR;
   }
 
   return OK;
@@ -76,7 +76,7 @@ STATUS die_roll(Die* die){
 STATUS die_print(Die* die){
 
   if(!die){
-  return ERROR;
+    return ERROR;
   }
 
   printf("The die with id %ld has : \n min value -> %d\n min value -> %d\n Last roll id -> %d\n",die->id,die->min,die->max,die->last_roll);
