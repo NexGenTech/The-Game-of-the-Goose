@@ -15,56 +15,56 @@
 
 Die* die_create(Id id, int min, int max){
 
-   Die *newDie = NULL;
+  Die *newDie = NULL;
 
-   newDie = (Die *) malloc(sizeof (Die));
+  newDie = (Die *) malloc(sizeof (Die));
 
-   if (newDie == NULL) {
-       return NULL;
-   }
+  if (newDie == NULL) {
+    return NULL;
+  }
 
-   newDie->id = id;
+  newDie->id = id;
 
-   newDie->min = min;
+  newDie->min = min;
 
-   newDie->max = max;
+  newDie->max = max;
 
-   newDie->last_roll = -1;
+  newDie->last_roll = -1;
 
-   return newDie;
+  srand(time(0));
+
+  return newDie;
  }
 
 STATUS die_destroy(Die* die) {
-   if (!die) {
-     return ERROR;
-   }
+  if (!die) {
+   return ERROR;
+  }
 
-   free(die);
-   die = NULL;
+  free(die);
+  die = NULL;
 
-   return OK;
+  return OK;
  }
 
 STATUS die_set_last_roll(Die* die, int last_roll) {
-   if (!die || !last_roll) {
-     return ERROR;
-   }
+  if (!die || !last_roll) {
+   return ERROR;
+  }
 
-   if (!(die->last_roll = last_roll)) {
-     return ERROR;
-   }
+  if (!(die->last_roll = last_roll)) {
+   return ERROR;
+  }
 
-   return OK;
+  return OK;
  }
 
  int die_get_last_roll(Die* die) {
 
-   return die->last_roll;
+  return die->last_roll;
  }
 
 STATUS die_roll(Die* die){
-
-  srand(time(0));
 
   int roll = (rand() % (die->max - die->min + 1)) + die->min;
 
@@ -76,10 +76,10 @@ STATUS die_roll(Die* die){
 STATUS die_print(Die* die){
 
   if(!die){
-    return ERROR;
+  return ERROR;
   }
 
-   printf("The die with id %ld has : \n min value -> %d\n min value -> %d\n Last roll id -> %d\n",die->id,die->min,die->max,die->last_roll);
+  printf("The die with id %ld has : \n min value -> %d\n min value -> %d\n Last roll id -> %d\n",die->id,die->min,die->max,die->last_roll);
 
   return OK;
  }
