@@ -65,7 +65,7 @@ STATUS inventory_del_object(Inventory* inventory, Id object) {
 }
 
 Id inventory_get_object_at(Inventory* inventory, int position) {
-    return set_get_id_at(inventory->objects, position);
+  return set_get_id_at(inventory->objects, position);
 }
 
 int inventory_get_max_objects(Inventory* inventory) {
