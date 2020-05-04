@@ -116,6 +116,141 @@ STATUS object_set_description(Object* object, char* desc);
 char* object_get_description(Object* object);
 
 /**
+ * @brief Sets if the object is movalbe
+ *
+ * Gets a BOOL as input and sets it as the object's movable state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose movable state will change
+ * @param move the movable state of the object
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_movable(Object* object, BOOL move);
+
+/**
+ * @brief Gets the movable state of the object
+ *
+ * Gets an object as input and returns it's movable state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose movable state will be returned
+ * @return a BOOL with the object's movable state
+ */
+BOOL object_get_movable(Object* object);
+
+/**
+ * @brief Sets if the object can open a link
+ *
+ * Gets a BOOL as input and sets it as the object's open state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose open state will change
+ * @param move the open state of the object
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_open(Object* object, Id open);
+
+/**
+ * @brief Gets the open state of the object
+ *
+ * Gets an object as input and returns it's open state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose open state will be returned
+ * @return the Id of the link that the object can open
+ */
+Id object_get_open(Object* object);
+
+/**
+ * @brief Sets if the object is hidden
+ *
+ * Gets a BOOL as input and sets it as the object's hidden state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose hidden state will change
+ * @param move the hidden state of the object
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_hidden(Object* object, BOOL hidden);
+
+/**
+ * @brief Gets the movable hidden of the object
+ *
+ * Gets an object as input and returns it's hidden state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose hidden state will be returned
+ * @return a BOOL with the object's hidden state
+ */
+BOOL object_get_hidden(Object* object);
+
+/**
+ * @brief Sets if the object is illuminatable
+ *
+ * Gets a BOOL as input and sets it as the object's illuminate state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose illuminate state will change
+ * @param move the illuminate state of the object
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_illuminate(Object* object, BOOL illuminate);
+
+/**
+ * @brief Gets the illuminate state of the object
+ *
+ * Gets an object as input and returns it's illuminate state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose illuminate state will be returned
+ * @return a BOOL with the object's illuminate state
+ */
+BOOL object_get_illuminate(Object* object);
+
+/**
+ * @brief Sets if the object is turned on
+ *
+ * Gets a BOOL as input and sets it as the object's turnedon state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose turnedon state will change
+ * @param move the turnedon state of the object
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_turnedon(Object* object, BOOL turnedon);
+
+/**
+ * @brief Gets the turnedon state of the object
+ *
+ * Gets an object as input and returns it's turnedon state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose turnedon state will be returned
+ * @return a BOOL with the object's turnedon state
+ */
+BOOL object_get_turnedon(Object* object);
+
+/**
  * @brief Print the data of a object
  *
  * Gets an object as input and prints it's fields
