@@ -201,6 +201,60 @@ STATUS space_set_west(Space* space, Id id);
 Id space_get_west(Space* space);
 
 /**
+ * @brief Sets the up id of a space
+ *
+ * space_set_up changes the up id of a space
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space  is the space that we want to change its up id
+ * @param id is the new up id of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_up(Space* space, Id id);
+
+/**
+ * @brief Gets the up id of a space
+ *
+ * space_get_up gets the up id of a space
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space  is the space whose up id we want to get
+ * @return the up id of the space
+ */
+Id space_get_up(Space* space);
+
+/**
+ * @brief Sets the down id of a space
+ *
+ * space_set_down changes the down id of a space
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space  is the space that we want to change its down id
+ * @param id is the new down id of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_down(Space* space, Id id);
+
+/**
+ * @brief Gets the down id of a space
+ *
+ * space_get_down gets the down id of a space
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space  is the space whose down id we want to get
+ * @return the down id of the space
+ */
+Id space_get_down(Space* space);
+
+/**
  * @brief Adds an object in a space
  *
  * space_set_object changes the object id of a space
@@ -319,6 +373,60 @@ STATUS space_set_description(Space* space, char* desc);
  * @return a string with the space's description
  */
 char* space_get_description(Space* space);
+
+/**
+ * @brief Sets the det_description of the space
+ *
+ * Gets a string as input and sets it as the space's det_description
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose det_description will change
+ * @param desc the new det_description of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_det_description(Space* space, char* desc);
+
+/**
+ * @brief Gets the det_description of the space
+ *
+ * Returns a space's det_description
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose det_description will be returned
+ * @return a string with the space's det_description
+ */
+char* space_get_det_description(Space* space);
+
+/**
+ * @brief Sets if the space is illuminatable
+ *
+ * Gets a BOOL as input and sets it as the space's illuminate state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose illuminate state will change
+ * @param move the illuminate state of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_illuminate(Space* space, BOOL illuminate);
+
+/**
+ * @brief Gets the illuminate state of the space
+ *
+ * Gets an space as input and returns it's illuminate state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose illuminate state will be returned
+ * @return a BOOL with the space's illuminate state
+ */
+BOOL space_get_illuminate(Space* space);
 
 /**
  * @brief Prints the data of a space
