@@ -110,12 +110,14 @@ STATUS object_set_movable(Object* object, BOOL move) {
 
   return OK;
 }
+
 BOOL object_get_movable(Object* object) {
   if (!object) {
     return NULL;
   }
   return object->movable;
 }
+
 STATUS object_set_open(Object* object, Id open) {
   if (!object || !open) {
     return ERROR;
@@ -125,12 +127,14 @@ STATUS object_set_open(Object* object, Id open) {
 
   return OK;
 }
+
 Id object_get_open(Object* object) {
   if (!object) {
     return NULL;
   }
   return object->open;
 }
+
 STATUS object_set_hidden(Object* object, BOOL hidden) {
   if (!object || !hidden) {
     return ERROR;
@@ -140,12 +144,14 @@ STATUS object_set_hidden(Object* object, BOOL hidden) {
 
   return OK;
 }
+
 BOOL object_get_hidden(Object* object) {
   if (!object) {
     return NULL;
   }
   return object->hidden;
 }
+
 STATUS object_set_illuminate(Object* object, BOOL illuminate) {
   if (!object || !illuminate) {
     return ERROR;
@@ -155,12 +161,14 @@ STATUS object_set_illuminate(Object* object, BOOL illuminate) {
 
   return OK;
 }
+
 BOOL object_get_illuminate(Object* object) {
   if (!object) {
     return NULL;
   }
   return object->illuminate;
 }
+
 STATUS object_set_turnedon(Object* object, BOOL turnedon) {
   if (!object || !turnedon) {
     return ERROR;
