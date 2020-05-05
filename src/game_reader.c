@@ -178,7 +178,7 @@ STATUS game_reader_load_players(Game game, char* filename) {
       toks = strtok(NULL, "|");
       location = atol(toks);
       toks = strtok(NULL, "|");
-      backpack_size = atol(toks);
+      backpack_size = atoi(toks);
 
       player = player_create(id);
       if (player != NULL) {
