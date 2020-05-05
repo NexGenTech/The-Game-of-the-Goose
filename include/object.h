@@ -124,10 +124,10 @@ char* object_get_description(Object* object);
  * @author Evangelos Lazarakis
  *
  * @param object the object whose movable state will change
- * @param move the movable state of the object
+ * @param movable the movable state of the object
  * @return a STATUS code, ERROR in case of an error or OK
  */
-STATUS object_set_movable(Object* object, BOOL move);
+STATUS object_set_movable(Object* object, BOOL movable);
 
 /**
  * @brief Gets the movable state of the object
