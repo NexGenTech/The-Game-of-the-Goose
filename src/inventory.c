@@ -37,7 +37,7 @@ STATUS inventory_destroy(Inventory* inventory) {
     return ERROR;
   }
 
-  free(inventory->objects);
+  set_destroy(inventory->objects);
   free(inventory);
   inventory = NULL;
 
