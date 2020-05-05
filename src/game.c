@@ -653,11 +653,14 @@ STATUS game_callback_move(Game game) {
   Id direction = (*space_direction_fn_list[d])(space);
 
   if(direction != NO_ID){
-    game_set_player_location(game, link_get_other(game_get_link(game, direction), space_get_id(space)));
-    return OK;
-  } else {
-    return ERROR;
+    Link* link = game_get_link(game, direction);
+    if(link_get_status(link) == OP){
+      game_set_player_location(game, link_get_other(game_get_link(game, direction), space_get_id(space)));
+      return OK;
+    }
   }
+
+  return ERROR;
 }
 
 STATUS game_callback_inspect(Game game) {
