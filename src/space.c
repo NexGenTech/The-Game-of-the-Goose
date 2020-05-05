@@ -277,7 +277,7 @@ STATUS space_set_illuminate(Space* space, BOOL illuminate) {
 
 BOOL space_get_illuminate(Space* space) {
   if (!space) {
-    return NULL;
+    return FALSE;
   }
   return space->illuminate;
 }
@@ -294,7 +294,7 @@ Id space_get_up(Space* space) {
   if (!space) {
     return NO_ID;
   }
-  return space->uup;
+  return space->up;
 }
 
 STATUS space_set_down(Space* space, Id id) {
