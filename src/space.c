@@ -23,6 +23,8 @@ typedef struct _Space{
   Id south;                         // The Id of the space that this is linked in the south
   Id east;                          // The Id of the space that this is linked in the east
   Id west;                          // The Id of the space that this is linked in the west
+  Id up;                            // The Id of the space that this is linked in the above floor
+  Id down;                          // The Id of the space that this is linked in the below floor
   Set* objects;                     // The set of the Id's of the objects that are on this space
   char gdesc[3][8];                 // An array of characters that hold the graphic description of the space
   char description[WORD_SIZE + 1];  // A description of the space
@@ -52,6 +54,8 @@ Space* space_create(Id id) {
   newSpace->south = NO_ID;
   newSpace->east = NO_ID;
   newSpace->west = NO_ID;
+  newSpace->up = NO_ID;
+  newSpace->down = NO_ID;
 
   newSpace->objects = set_create();
 
@@ -259,6 +263,36 @@ BOOL space_get_illuminate(Space* space) {
     return NULL;
   }
   return space->illuminate;
+}
+
+STATUS space_set_up(Space* space, Id id) {
+  if (!space) {
+    return ERROR;
+  }
+  space->up = id;
+  return OK;
+}
+
+Id space_get_up(Space* space) {
+  if (!space) {
+    return NO_ID;
+  }
+  return space->uup;
+}
+
+STATUS space_set_down(Space* space, Id id) {
+  if (!space) {
+    return ERROR;
+  }
+  space->down = id;
+  return OK;
+}
+
+Id space_get_down(Space* space) {
+  if (!space) {
+    return NO_ID;
+  }
+  return space->down;
 }
 
 STATUS space_print(Space* space) {

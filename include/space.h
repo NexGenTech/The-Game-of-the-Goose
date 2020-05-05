@@ -201,6 +201,60 @@ STATUS space_set_west(Space* space, Id id);
 Id space_get_west(Space* space);
 
 /**
+ * @brief Sets the up id of a space
+ *
+ * space_set_up changes the up id of a space
+ *
+ * @date 13-01-2015
+ * @author Profesores PPROG
+ *
+ * @param space  is the space that we want to change its up id
+ * @param id is the new up id of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_up(Space* space, Id id);
+
+/**
+ * @brief Gets the up id of a space
+ *
+ * space_get_up gets the up id of a space
+ *
+ * @date 13-01-2015
+ * @author Profesores PPROG
+ *
+ * @param space  is the space whose up id we want to get
+ * @return the up id of the space
+ */
+Id space_get_up(Space* space);
+
+/**
+ * @brief Sets the down id of a space
+ *
+ * space_set_down changes the down id of a space
+ *
+ * @date 13-01-2015
+ * @author Profesores PPROG
+ *
+ * @param space  is the space that we want to change its down id
+ * @param id is the new down id of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_down(Space* space, Id id);
+
+/**
+ * @brief Gets the down id of a space
+ *
+ * space_get_down gets the down id of a space
+ *
+ * @date 13-01-2015
+ * @author Profesores PPROG
+ *
+ * @param space  is the space whose down id we want to get
+ * @return the down id of the space
+ */
+Id space_get_down(Space* space);
+
+/**
  * @brief Adds an object in a space
  *
  * space_set_object changes the object id of a space
