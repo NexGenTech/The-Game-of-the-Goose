@@ -17,15 +17,16 @@
 
 
 typedef struct _Space{
-  Id id;                        // Id of the space
-  char name[WORD_SIZE + 1];     // The name of the space
-  Id north;                     // The Id of the space that this is linked in the north
-  Id south;                     // The Id of the space that this is linked in the south
-  Id east;                      // The Id of the space that this is linked in the east
-  Id west;                      // The Id of the space that this is linked in the west
-  Set* objects;                 // The set of the Id's of the objects that are on this space
-  char gdesc[3][8];             // An array of characters that hold the graphic description of the space
+  Id id;                            // Id of the space
+  char name[WORD_SIZE + 1];         // The name of the space
+  Id north;                         // The Id of the space that this is linked in the north
+  Id south;                         // The Id of the space that this is linked in the south
+  Id east;                          // The Id of the space that this is linked in the east
+  Id west;                          // The Id of the space that this is linked in the west
+  Set* objects;                     // The set of the Id's of the objects that are on this space
+  char gdesc[3][8];                 // An array of characters that hold the graphic description of the space
   char description[WORD_SIZE + 1];  // A description of the space
+  BOOL illuminate;                  // Specifies if a space is illuminated or not
 }Space;
 
 
@@ -59,6 +60,9 @@ Space* space_create(Id id) {
   }
 
   newSpace->description[0] = '\0';
+
+  newSpace->illuminate = FALSE;
+
   return newSpace;
 }
 
@@ -240,6 +244,23 @@ char* space_get_description(Space* space) {
   return space->description;
 }
 
+STATUS space_set_illuminate(Space* space, BOOL illuminate) {
+  if (!space || !illuminate) {
+    return ERROR;
+  }
+
+  space->illuminate = illuminate;
+
+  return OK;
+}
+
+BOOL space_get_illuminate(Space* space) {
+  if (!space) {
+    return NULL;
+  }
+  return space->illuminate;
+}
+
 STATUS space_print(Space* space) {
   Id idaux = NO_ID;    // idaux is going to help with the printing by loading into it every field if the space
 
@@ -294,6 +315,13 @@ STATUS space_print(Space* space) {
 
   fprintf(stdout, "---> Space Description :\n");
   printf("\t%s\n", space_get_description(space));
+
+  fprintf(stdout, "---> Illuminate : ");
+  if(space_get_illuminate(space) == TRUE) {
+    printf("%s\n", "TRUE");
+  } else {
+    printf("%s\n", "FALSE");
+  }
 
   return OK;
 }

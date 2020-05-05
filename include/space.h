@@ -321,6 +321,33 @@ STATUS space_set_description(Space* space, char* desc);
 char* space_get_description(Space* space);
 
 /**
+ * @brief Sets if the space is illuminatable
+ *
+ * Gets a BOOL as input and sets it as the space's illuminate state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose illuminate state will change
+ * @param move the illuminate state of the space
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS space_set_illuminate(Space* space, BOOL illuminate);
+
+/**
+ * @brief Gets the illuminate state of the space
+ *
+ * Gets an space as input and returns it's illuminate state
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param space the space whose illuminate state will be returned
+ * @return a BOOL with the space's illuminate state
+ */
+BOOL space_get_illuminate(Space* space);
+
+/**
  * @brief Prints the data of a space
  *
  * space_print prints all of a space's information
