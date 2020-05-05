@@ -13,6 +13,13 @@
  #include <time.h>
  #include "die.h"
 
+ typedef struct _Die{
+    Id id;
+    int min;
+    int max;
+    int last_roll;
+ }Die;
+
 Die* die_create(Id id, int min, int max){
 
   Die *newDie = NULL;

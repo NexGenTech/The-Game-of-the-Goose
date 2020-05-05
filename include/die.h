@@ -16,12 +16,7 @@
   * @brief the Die structure
   * Stores the data of the Die
   */
- typedef struct _Die{
-    Id id;
-    int min;
-    int max;
-    int last_roll;
- }Die;
+ typedef struct _Die Die;
 
  /**
   * @brief Creates a die
@@ -95,7 +90,7 @@
   * @brief Print the data of a die
   *
   * Gets a die pointer as input and prints all it's fields
-  * 
+  *
   * @author Evangelos Lazarakis
   * @date 25-02-2020
   *
