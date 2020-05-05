@@ -14,7 +14,7 @@
 #include <string.h>
 #include "game_reader.h"
 
-#define N_CALLBACK 11            //The number of callbacks for the commands
+#define N_CALLBACK 14            //The number of callbacks for the commands
 
  struct _Game{
   Player* player;                        // A pointer to the player of the game
@@ -46,6 +46,10 @@ STATUS game_callback_left(Game game);      //A callback for the LEFT command
 STATUS game_callback_right(Game game);     //A callback for the RIGHT command
 STATUS game_callback_move(Game game);      //A callback for the MOVE command
 STATUS game_callback_inspect(Game game);   //A callback for the INSPECT command
+STATUS game_callback_turnon(Game game);    //A callback for the TURNON command
+STATUS game_callback_turnoff(Game game);   //A callback for the TURNOFF command
+STATUS game_callback_open(Game game);      //A callback for the OPEN command
+
 
 static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_unknown,
@@ -58,7 +62,10 @@ static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_left,
   game_callback_right,
   game_callback_move,
-  game_callback_inspect};
+  game_callback_inspect,
+  game_callback_turnon,
+  game_callback_turnoff,
+  game_callback_open};
 
 /**
    Define the function type for the directions
@@ -347,6 +354,16 @@ int game_get_n_objects(Game game){
   return i;
 }
 
+int game_get_n_links(Game game){
+
+  int i = 0;
+  while(game->links[i] != NULL){
+    i++;
+  }
+
+  return i;
+}
+
 STATUS game_set_last_description(Game game, char* desc) {
 
   if(desc == NULL) {
@@ -452,6 +469,14 @@ Link* game_get_link(Game game, Id id){
   }
 
   return NULL;
+}
+
+Link* game_get_link_at(Game game, int position){
+  if (position < 0 || position >= MAX_LINKS) {
+    return NULL;
+  }
+
+  return game->links[position];
 }
 
 void game_print_data(Game game) {
@@ -653,6 +678,104 @@ STATUS game_callback_inspect(Game game) {
         if((player_search_object(game->player, obj_id) != NO_ID) || (space_contain_object(space, obj_id) == TRUE)) {
           game_set_last_description(game, object_get_description(obj));
           return OK;
+        }
+      }
+    }
+  }
+
+  return ERROR;
+}
+
+STATUS game_callback_turnon(Game game){
+  Id obj_id = NO_ID;
+  char target[255];      // The target of the turnon command
+  scanf("%s",target);
+
+  for(int i = 0; i < game_get_n_objects(game); i++) {        // Search for the target object in the game
+    Object* object = game_get_object_at(game, i);
+    if(strcmp(target, object_get_name(object)) == 0) {
+      obj_id = object_get_id(object);
+    }
+  }
+
+  if(obj_id != NO_ID){                                                   // If the object is in the players backpack and can be illuminated
+    if(player_search_object(game_get_player(game), obj_id) == obj_id) {  // the object is turned on if it is not already
+      Object* object = game_get_object(game, obj_id);
+      if((object_get_illuminate(object) == TRUE) && (object_get_turnedon(object) == FALSE)) {
+        object_set_turnedon(object, TRUE);
+        return OK;
+      }
+    }
+  }
+
+  return ERROR;
+}
+
+STATUS game_callback_turnoff(Game game){
+  Id obj_id = NO_ID;
+  char target[255];      // The target of the turnoff command
+  scanf("%s",target);
+
+  for(int i = 0; i < game_get_n_objects(game); i++) {        // Search for the target object in the game
+    Object* object = game_get_object_at(game, i);
+    if(strcmp(target, object_get_name(object)) == 0) {
+      obj_id = object_get_id(object);
+    }
+  }
+
+  if(obj_id != NO_ID){                                                   // If the object is in the players backpack and can be illuminated
+    if(player_search_object(game_get_player(game), obj_id) == obj_id) {  // the object is turned off if it is not already
+      Object* object = game_get_object(game, obj_id);
+      if((object_get_illuminate(object) == TRUE) && (object_get_turnedon(object) == TRUE)) {
+        object_set_turnedon(object, FALSE);
+        return OK;
+      }
+    }
+  }
+
+  return ERROR;
+}
+
+STATUS game_callback_open(Game game){
+  Space* space = game_get_space(game,game_get_player_location(game));
+
+  Id link_id = NO_ID;
+  char target_link[255];      // The target link of the open command
+  scanf("%s",target_link);
+
+  for(int i = 0; i < game_get_n_links(game); i++) {        // Search for the target link in the game
+    Link* link = game_get_link_at(game, i);
+    if(strcmp(target_link, link_get_name(link)) == 0) {
+      link_id = link_get_id(link);
+    }
+  }
+
+  char with[255];           // Expecting "with" as input
+  scanf("%s",with);
+
+  if((strcmp(with, "with") == 0) && (link_id != NO_ID)){
+    Id obj_id = NO_ID;
+    char target_obj[255];      // The target object of the open command
+    scanf("%s",target_obj);
+
+    for(int i = 0; i < game_get_n_objects(game); i++) {        // Search for the target object in the game
+      Object* object = game_get_object_at(game, i);
+      if(strcmp(target_obj, object_get_name(object)) == 0) {
+        obj_id = object_get_id(object);
+      }
+    }
+
+    if(obj_id != NO_ID){                                                      // If the object is in the player's backpack and can open the link specified
+      if(player_search_object(game_get_player(game), obj_id) == obj_id){      // and the link is on the space that the player is, then the link is opened if
+        Object* object = game_get_object(game, obj_id);                       // it is not already
+        if(object_get_open(object) == link_id){
+          if((link_id == space_get_north(space)) || (link_id == space_get_east(space)) || (link_id == space_get_south(space)) || (link_id == space_get_west(space))) {
+            Link* link = game_get_link(game, link_id);
+            if(link_get_status(link) == CL) {
+              link_set_status(link, OP);
+              return OK;
+            }
+          }
         }
       }
     }

@@ -16,7 +16,7 @@
 #define MAX_LINKS 100              // The maximum number of links in a game
 
 typedef enum {
-  OPEN, CLOSED
+  OP, CL
 } LINK_STATUS;
 
 /**

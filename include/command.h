@@ -12,11 +12,11 @@
 #define COMMAND_H
 
 #define N_CMDT 2           //Number of command types
-#define N_CMD 12           //Number of commands
+#define N_CMD 15           //Number of commands
 
 typedef enum enum_CmdType {CMDS, CMDL} T_CmdType;           //An enumeration for the command types
 
-typedef enum enum_Command {NO_CMD = -1, UNKNOWN, EXIT, NEXT, BACK, TAKE, DROP, ROLL, LEFT, RIGHT, MOVE, INSPECT} T_Command;           //An enumeration for all the commands
+typedef enum enum_Command {NO_CMD = -1, UNKNOWN, EXIT, NEXT, BACK, TAKE, DROP, ROLL, LEFT, RIGHT, MOVE, INSPECT, TURNON, TURNOFF, OPEN} T_Command;           //An enumeration for all the commands
 
 /**
  * @brief Gets command the user wants to execute

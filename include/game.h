@@ -164,6 +164,21 @@ Object* game_get_object(Game game, Id id);
 Object* game_get_object_at(Game game, int position);
 
 /**
+ * @brief Gets an link from a game
+ *
+ * Gets an int as input and returns the link that is in that
+ * position in the links array
+ *
+ * @author Evangelos Lazarakis
+ * @date 25-03-2020
+ *
+ * @param game the game struct from which the link will be returned
+ * @param position the position in the links array
+ * @return a pointer to the link that is in the position position
+ */
+Link* game_get_link_at(Game game, int position);
+
+/**
  * @brief Gets the player of the game
  *
  * Gets the game as input and returns a pointer to
@@ -216,6 +231,18 @@ Id game_get_object_location(Game game, Id object_id);
  * @return the number of objects of the game
  */
 int game_get_n_objects(Game game);
+
+/**
+ * @brief Gets the number of links in the game
+ *
+ * Gets a game as input and returns the number of it's links
+ *
+ * @author Evangelos Lazarakis
+ * @date 29-02-2020
+ *
+ * @param game the game whose number of objlinksects of the game
+ */
+int game_get_n_links(Game game);
 
 /**
  * @brief Gets the last command that was executed in the game
