@@ -207,7 +207,7 @@ STATUS game_reader_load_links(Game game, char* filename) {
   char name[WORD_SIZE] = "";
   char* toks = NULL;
   Id id = NO_ID, space_one = NO_ID, space_two = NO_ID;
-  LINK_STATUS link_status = OPEN;
+  LINK_STATUS link_status = OP;
   Link* link = NULL;
   STATUS status = OK;
 

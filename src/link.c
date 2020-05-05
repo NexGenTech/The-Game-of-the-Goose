@@ -33,7 +33,7 @@ Link* link_create(Id id) {
   newlink->name[0] = '\0';
   newlink->space_one = NO_ID;
   newlink->space_two = NO_ID;
-  newlink->status = CLOSED;
+  newlink->status = CL;
 
   return newlink;
 }
@@ -142,7 +142,7 @@ STATUS link_print(Link* link) {
   printf("Link :\n  Id: %ld\n  Name: %s\n  Space Id #1: %ld\n  Space Id #2: %ld\n  ",
   link->id, link->name, link->space_one, link->space_two);
 
-  if (link->status == OPEN) {
+  if (link->status == OP) {
     printf("OPEN\n\n");
   } else {
     printf("CLOSED\n\n");

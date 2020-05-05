@@ -20,7 +20,7 @@ int main(void) {
   link_set_name(link,name);
   link_set_space_one_id(link,space_one);
   link_set_space_two_id(link, space_two);
-  link_set_status(link,OPEN);
+  link_set_status(link,OP);
 
   link_print(link);
 
