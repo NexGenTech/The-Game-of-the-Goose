@@ -17,18 +17,19 @@
 
 
 typedef struct _Space{
-  Id id;                            // Id of the space
-  char name[WORD_SIZE + 1];         // The name of the space
-  Id north;                         // The Id of the space that this is linked in the north
-  Id south;                         // The Id of the space that this is linked in the south
-  Id east;                          // The Id of the space that this is linked in the east
-  Id west;                          // The Id of the space that this is linked in the west
-  Id up;                            // The Id of the space that this is linked in the above floor
-  Id down;                          // The Id of the space that this is linked in the below floor
-  Set* objects;                     // The set of the Id's of the objects that are on this space
-  char gdesc[3][8];                 // An array of characters that hold the graphic description of the space
-  char description[WORD_SIZE + 1];  // A description of the space
-  BOOL illuminate;                  // Specifies if a space is illuminated or not
+  Id id;                                // Id of the space
+  char name[WORD_SIZE + 1];             // The name of the space
+  Id north;                             // The Id of the space that this is linked in the north
+  Id south;                             // The Id of the space that this is linked in the south
+  Id east;                              // The Id of the space that this is linked in the east
+  Id west;                              // The Id of the space that this is linked in the west
+  Id up;                                // The Id of the space that this is linked in the above floor
+  Id down;                              // The Id of the space that this is linked in the below floor
+  Set* objects;                         // The set of the Id's of the objects that are on this space
+  char gdesc[3][8];                     // An array of characters that hold the graphic description of the space
+  char description[WORD_SIZE + 1];      // A description of the space
+  char det_description[WORD_SIZE + 1];  // A more detailed description of the space
+  BOOL illuminate;                      // Specifies if a space is illuminated or not
 }Space;
 
 
@@ -64,6 +65,7 @@ Space* space_create(Id id) {
   }
 
   newSpace->description[0] = '\0';
+  newSpace->det_description[0] = '\0';
 
   newSpace->illuminate = FALSE;
 
@@ -248,6 +250,21 @@ char* space_get_description(Space* space) {
   return space->description;
 }
 
+STATUS space_set_det_description(Space* space, char* desc) {
+
+  if(desc == NULL) {
+    return ERROR;
+  }
+
+  strcpy(space->det_description, desc);
+
+  return OK;
+}
+
+char* space_get_det_description(Space* space) {
+  return space->det_description;
+}
+
 STATUS space_set_illuminate(Space* space, BOOL illuminate) {
   if (!space || !illuminate) {
     return ERROR;
@@ -349,6 +366,9 @@ STATUS space_print(Space* space) {
 
   fprintf(stdout, "---> Space Description :\n");
   printf("\t%s\n", space_get_description(space));
+
+  fprintf(stdout, "---> Space Detailed Description :\n");
+  printf("\t%s\n", space_get_det_description(space));
 
   fprintf(stdout, "---> Illuminate : ");
   if(space_get_illuminate(space) == TRUE) {
