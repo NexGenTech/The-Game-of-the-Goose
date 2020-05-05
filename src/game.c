@@ -14,7 +14,7 @@
 #include <string.h>
 #include "game_reader.h"
 
-#define N_CALLBACK 11            //The number of callbacks for the commands
+#define N_CALLBACK 14            //The number of callbacks for the commands
 
  struct _Game{
   Player* player;                        // A pointer to the player of the game
@@ -769,10 +769,10 @@ STATUS game_callback_open(Game game){
       if(player_search_object(game_get_player(game), obj_id) == obj_id){      // and the link is on the space that the player is, then the link is opened if
         Object* object = game_get_object(game, obj_id);                       // it is not already
         if(object_get_open(object) == link_id){
-          if((link_id == space_get_north(space)) || (link_id == space_get_east(space)) || (link_id == space_get_south(space)) || (link_id == space_get_west)) {
+          if((link_id == space_get_north(space)) || (link_id == space_get_east(space)) || (link_id == space_get_south(space)) || (link_id == space_get_west(space))) {
             Link* link = game_get_link(game, link_id);
-            if(link_get_status(link) == CLOSED) {
-              link_set_status(link, OPEN);
+            if(link_get_status(link) == CL) {
+              link_set_status(link, OP);
               return OK;
             }
           }
