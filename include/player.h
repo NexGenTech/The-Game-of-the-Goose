@@ -170,6 +170,19 @@ Id player_search_object(Player* player, Id object);
 STATUS player_set_backpack_size(Player* player, int size);
 
 /**
+ * @brief Gets the size of the player's backpack
+ *
+ * Gets a player and returns it's backpack size
+ *
+ * @author Evangelos Lazarakis
+ * @date 30-03-2020
+ *
+ * @param player the player whose backpack's size will be returned
+ * @return the player's backpack size
+ */
+int player_get_backpack_size(Player* player);
+
+/**
  * @brief Checks if a player's backpack is full or not
  *
  * Gets a player as input and returns if it's backpack has free space

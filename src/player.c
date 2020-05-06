@@ -143,6 +143,10 @@ STATUS player_set_backpack_size(Player* player, int size) {
   return OK;
 }
 
+int player_get_backpack_size(Player* player){
+  return inventory_get_max_objects(player->backpack);
+}
+
 STATUS player_backpack_has_space(Player* player) {
   return inventory_has_space(player->backpack);
 }
