@@ -252,3 +252,76 @@ STATUS game_management_load_links(Game game, char* filename) {
 
   return status;
 }
+
+STATUS game_management_save(Game game, char* filename){
+  FILE* file = NULL;
+  Player* player = NULL;
+  Space* space = NULL;
+  Object* object = NULL;
+  Link* link = NULL;
+  char str[255];
+
+  if (!filename) {
+    return ERROR;
+  }
+
+  file = fopen(filename, "w");
+  if (file == NULL) {
+    return ERROR;
+  }
+
+  // Save the game's spaces
+  for(int i = 0; i < game_get_n_spaces(game); i++) {
+    space = game_get_space_at(game, i);
+
+    sprintf(str, "#s:%ld|%s|%ld|%ld|%ld|%ld|%s|%s|%s|%s|\n", space_get_id(space), space_get_name(space), space_get_north(space), space_get_east(space),
+    space_get_south(space), space_get_west(space), space_get_graphics_line(space, 0), space_get_graphics_line(space, 1), space_get_graphics_line(space, 2),
+    space_get_description(space));
+
+    fprintf(file,"%s", str);
+  }
+
+  // Save the game's objects
+  for(int i = 0; i < game_get_n_objects(game); i++) {
+    object = game_get_object_at(game, i);
+
+    sprintf(str, "#o:%ld|%s|%ld|%s|\n", object_get_id(object), object_get_name(object), game_get_object_location(game, object_get_id(object)), object_get_description(object));
+
+    fprintf(file, "%s",str);
+  }
+
+  // Save the game's links
+  for(int i = 0; i < game_get_n_links(game); i++) {
+    link = game_get_link_at(game, i);
+
+    sprintf(str, "#l:%ld|%s|%ld|%ld|%d|\n", link_get_id(link), link_get_name(link), link_get_space_one_id(link), link_get_space_two_id(link), link_get_status(link));
+
+    fprintf(file, "%s", str);
+  }
+
+  // Save the game's player
+  player = game_get_player(game);
+  sprintf(str, "#p:$ld|%s|%ld|%d|", player_get_id(player), player_get_name(player), player_get_location(player), player_get_backpack_size(player));
+  fprintf(file, "%s", str);
+
+  return OK;
+
+}
+
+STATUS game_management_load(Game game, char* filename){
+  if (!filename) {
+    return ERROR;
+  }
+
+  if(!game_destroy(game)){
+    return ERROR;
+  }
+
+  game = game_create_from_file(filename);
+
+  if(game == NULL){
+    return ERROR;
+  }
+
+  return OK;
+}
