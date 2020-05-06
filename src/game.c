@@ -274,12 +274,19 @@ Object* game_get_object(Game game, Id id){
 }
 
 Object* game_get_object_at(Game game, int position) {
-
-  if (position < 0 || position >= MAX_SPACES) {
+  if (position < 0 || position >= MAX_OBJECTS) {
     return NULL;
   }
 
   return game->objects[position];
+}
+
+Space* game_get_space_at(Game game, int position) {
+  if (position < 0 || position >= MAX_SPACES) {
+    return NULL;
+  }
+
+  return game->spaces[position];
 }
 
 STATUS game_add_player(Game game, Player* player) {
@@ -360,6 +367,15 @@ int game_get_n_links(Game game){
 
   int i = 0;
   while(game->links[i] != NULL){
+    i++;
+  }
+
+  return i;
+}
+
+int game_get_n_spaces(Game game) {
+  int i = 0;
+  while(game->spaces[i] != NULL){
     i++;
   }
 

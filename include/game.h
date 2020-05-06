@@ -179,6 +179,21 @@ Object* game_get_object_at(Game game, int position);
 Link* game_get_link_at(Game game, int position);
 
 /**
+ * @brief Gets an space from a game
+ *
+ * Gets an int as input and returns the space that is in that
+ * position in the spaces array
+ *
+ * @author Evangelos Lazarakis
+ * @date 25-03-2020
+ *
+ * @param game the game struct from which the space will be returned
+ * @param position the position in the spaces array
+ * @return a pointer to the space that is in the position position
+ */
+Space* game_get_space_at(Game game, int position);
+
+/**
  * @brief Gets the player of the game
  *
  * Gets the game as input and returns a pointer to
@@ -240,9 +255,21 @@ int game_get_n_objects(Game game);
  * @author Evangelos Lazarakis
  * @date 29-02-2020
  *
- * @param game the game whose number of objlinksects of the game
+ * @param game the game whose number of links of the game
  */
 int game_get_n_links(Game game);
+
+/**
+ * @brief Gets the number of spaces in the game
+ *
+ * Gets a game as input and returns the number of it's spaces
+ *
+ * @author Evangelos Lazarakis
+ * @date 29-02-2020
+ *
+ * @param game the game whose number of spaces of the game
+ */
+int game_get_n_spaces(Game game);
 
 /**
  * @brief Gets the last command that was executed in the game
