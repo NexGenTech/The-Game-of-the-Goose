@@ -14,7 +14,7 @@
 #include <string.h>
 #include "game_management.h"
 
-#define N_CALLBACK 14            //The number of callbacks for the commands
+#define N_CALLBACK 16            //The number of callbacks for the commands
 
  struct _Game{
   Player* player;                        // A pointer to the player of the game
@@ -49,6 +49,8 @@ STATUS game_callback_inspect(Game game);   //A callback for the INSPECT command
 STATUS game_callback_turnon(Game game);    //A callback for the TURNON command
 STATUS game_callback_turnoff(Game game);   //A callback for the TURNOFF command
 STATUS game_callback_open(Game game);      //A callback for the OPEN command
+STATUS game_callback_save(Game game);      //A callback for the SAVE command
+STATUS game_callback_load(Game game);      //A callback for the LOAD command
 
 
 static callback_fn game_callback_fn_list[N_CALLBACK]={
@@ -65,7 +67,9 @@ static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_inspect,
   game_callback_turnon,
   game_callback_turnoff,
-  game_callback_open};
+  game_callback_open,
+  game_callback_save,
+  game_callback_load};
 
 /**
    Define the function type for the directions
@@ -785,4 +789,18 @@ STATUS game_callback_open(Game game){
   }
 
   return ERROR;
+}
+
+STATUS game_callback_save(Game game){
+  char target[255];      // The target file of the save command
+  scanf("%s",target);
+
+  return game_management_save(game, target);
+}
+
+STATUS game_callback_load(Game game){
+  char target[255];      // The target file of the load command
+  scanf("%s",target);
+
+  return game_management_load(game, target);
 }

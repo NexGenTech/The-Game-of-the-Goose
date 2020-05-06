@@ -17,7 +17,7 @@
 //A matrix with all the possible commands
 char *cmd_to_str[N_CMD][N_CMDT] = {{"","No command"}, {"","Unknown"},{"e","Exit"}, {"n","Next"}, {"b","Back"},
 {"t","Take"}, {"d","Drop"}, {"rl","Roll"}, {"l","Left"}, {"r","Right"}, {"m","Move"}, {"i","Inspect"},
-{"turnon", "Turnon"}, {"turnoff", "Turnoff"}, {"o", "Open"}};
+{"turnon", "Turnon"}, {"turnoff", "Turnoff"}, {"o", "Open"}, {"save", "Save"}, {"load", "Load"}};
 
 T_Command command_get_user_input(){
 
