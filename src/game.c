@@ -198,8 +198,6 @@ Game game_create_from_file(char* filename) {
   if (game_management_load_players(game, filename) == ERROR)
     return NULL;
 
-  //game_set_player_location(game, game_get_space_id_at(game, 0));
-
   return game;
 }
 
