@@ -24,7 +24,7 @@ ARGS = Game_of_Goose.dat
 
 #Each executable's object files
 GAME_OBJS = $(OBJDIR)/space.o $(OBJDIR)/player.o $(OBJDIR)/object.o \
- $(OBJDIR)/game.o $(OBJDIR)/game_reader.o $(OBJDIR)/graphic_engine.o \
+ $(OBJDIR)/game.o $(OBJDIR)/game_management.o $(OBJDIR)/graphic_engine.o \
  $(OBJDIR)/screen.o $(OBJDIR)/die.o $(OBJDIR)/inventory.o $(OBJDIR)/set.o \
  $(OBJDIR)/command.o $(OBJDIR)/link.o $(OBJDIR)/game_loop.o
 

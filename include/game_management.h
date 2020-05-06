@@ -1,14 +1,14 @@
 /**
- * @brief It defines the game reader
+ * @brief It defines the game management
  *
- * @file game_reader.h
+ * @file game_management.h
  * @author Adam Mahjoub
  * @version 1.0
  * @date 13-02-2020
  */
 
-#ifndef GAME_READER_H
-#define GAME_READER_H
+#ifndef GAME_MANAGEMENT_H
+#define GAME_MANAGEMENT_H
 
 #include "game.h"
 
@@ -24,7 +24,7 @@
  * @param filename the file that we are going to load the spaces from
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_reader_load_spaces(Game game, char* filename);
+STATUS game_management_load_spaces(Game game, char* filename);
 
 /**
  * @brief Loads objects from a file
@@ -38,7 +38,7 @@ STATUS game_reader_load_spaces(Game game, char* filename);
  * @param filename the file that we are going to load the objects from
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_reader_load_objects(Game game, char* filename);
+STATUS game_management_load_objects(Game game, char* filename);
 
 /**
  * @brief Loads players from a file
@@ -52,12 +52,12 @@ STATUS game_reader_load_objects(Game game, char* filename);
  * @param filename the file that we are going to load the players from
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_reader_load_players(Game game, char* filename);
+STATUS game_management_load_players(Game game, char* filename);
 
 /**
  * @brief Loads links from a file
  *
- * Gest a game and a filename as input and adds the links it read from the file 
+ * Gest a game and a filename as input and adds the links it read from the file
  *
  * @author Evanglelos Lazarakis
  * @date 28-03-2020
@@ -66,6 +66,6 @@ STATUS game_reader_load_players(Game game, char* filename);
  * @param filename the file that we are going to load the links from
  * @return a STATUS code, ERROR if any error occures or OK
  */
-STATUS game_reader_load_links(Game game, char* filename);
+STATUS game_management_load_links(Game game, char* filename);
 
 #endif

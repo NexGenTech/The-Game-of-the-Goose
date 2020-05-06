@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "game_reader.h"
+#include "game_management.h"
 
 #define N_CALLBACK 14            //The number of callbacks for the commands
 
@@ -182,16 +182,16 @@ Game game_create_from_file(char* filename) {
   if (game == NULL)
     return NULL;
 
-  if (game_reader_load_spaces(game, filename) == ERROR)
+  if (game_management_load_spaces(game, filename) == ERROR)
     return NULL;
 
-  if (game_reader_load_objects(game, filename) == ERROR)
+  if (game_management_load_objects(game, filename) == ERROR)
     return NULL;
 
-  if (game_reader_load_links(game, filename) == ERROR)
+  if (game_management_load_links(game, filename) == ERROR)
     return NULL;
 
-  if (game_reader_load_players(game, filename) == ERROR)
+  if (game_management_load_players(game, filename) == ERROR)
     return NULL;
 
   //game_set_player_location(game, game_get_space_id_at(game, 0));

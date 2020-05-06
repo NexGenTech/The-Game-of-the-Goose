@@ -1,7 +1,7 @@
 /**
- * @brief It implements the game reader
+ * @brief It implements the game management
  *
- * @file game_reader.c
+ * @file game_management.c
  * @author Adam Mahjoub
  * @version 1.0
  * @date 13-02-2020
@@ -11,11 +11,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "game_reader.h"
+#include "game_management.h"
 #include "game.h"
 
 
-STATUS game_reader_load_spaces(Game game, char* filename) {
+STATUS game_management_load_spaces(Game game, char* filename) {
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
@@ -89,7 +89,7 @@ STATUS game_reader_load_spaces(Game game, char* filename) {
   return status;
 }
 
-STATUS game_reader_load_objects(Game game, char* filename){
+STATUS game_management_load_objects(Game game, char* filename){
 
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
@@ -148,7 +148,7 @@ STATUS game_reader_load_objects(Game game, char* filename){
 
 }
 
-STATUS game_reader_load_players(Game game, char* filename) {
+STATUS game_management_load_players(Game game, char* filename) {
 
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
@@ -200,7 +200,7 @@ STATUS game_reader_load_players(Game game, char* filename) {
   return status;
 }
 
-STATUS game_reader_load_links(Game game, char* filename) {
+STATUS game_management_load_links(Game game, char* filename) {
 
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
