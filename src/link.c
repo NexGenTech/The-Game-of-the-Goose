@@ -44,6 +44,7 @@ STATUS link_destroy(Link* link) {
   }
 
   free(link);
+  link = NULL;
 
   return OK;
 }
