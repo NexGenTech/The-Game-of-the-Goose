@@ -173,6 +173,10 @@ STATUS player_can_take_object(Player* player, Object* object){
   return OK;
 }
 
+Id player_get_object_at(Player* player, int pos){
+  return inventory_get_object_at(player->backpack, pos);
+}
+
 void player_print(Player* player){
 
   printf("The player with id %ld has : \n name -> %s\n location id -> %ld\n object ids : \n",player->id,player->name,player->location);

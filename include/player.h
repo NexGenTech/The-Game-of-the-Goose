@@ -211,6 +211,20 @@ STATUS player_backpack_has_space(Player* player);
 STATUS player_can_take_object(Player* player, Object* object);
 
 /**
+ * @brief Gets the object Id in a certain position in the ids array
+ *
+ * Gets an player and an index as input nad returns the Id that is stored in that index in the player's backpack
+ *
+ * @author Evangelos Lazarakis
+ * @date 27-03-2020
+ *
+ * @param player the player from which we want an Id
+ * @param position the position in the ids array whose object id will be returned
+ * @return the Id of the specific position in the ids array
+ */
+Id player_get_object_at(Player* player, int pos);
+
+/**
  * @brief Print the data of a player
  *
  * Gets a player as input and prints its fields
