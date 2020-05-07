@@ -196,6 +196,21 @@ int player_get_backpack_size(Player* player);
 STATUS player_backpack_has_space(Player* player);
 
 /**
+ * @brief Determines if an object can be taken by a player
+ *
+ * Gets an object and a player as input and checks the object's dependency and
+ * and incompatibility and determines if the player can take the object
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param player  the player that wants to add the object to his backpack
+ * @param object  the object that the player wants to add to his backpack
+ * @return a STATUS code, ERROR if the playercan not take the object or OK if he can
+ */
+STATUS player_can_take_object(Player* player, Object* object);
+
+/**
  * @brief Print the data of a player
  *
  * Gets a player as input and prints its fields

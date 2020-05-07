@@ -151,6 +151,28 @@ STATUS player_backpack_has_space(Player* player) {
   return inventory_has_space(player->backpack);
 }
 
+STATUS player_can_take_object(Player* player, Object* object){
+  BOOL flag1 = TRUE, flag2 = TRUE;
+
+  if(object_get_dependency(object) != NO_ID){
+    if(player_search_object(player, object_get_dependency(object)) == NO_ID){
+      flag1 = FALSE;
+    }
+  }
+
+  if(object_get_incompatible(object) != NO_ID){
+    if(player_search_object(player, object_get_incompatible(object)) != NO_ID){
+      flag2 = FALSE;
+    }
+  }
+
+  if((flag1 == FALSE) || (flag2 == FALSE)){
+    return ERROR;
+  }
+
+  return OK;
+}
+
 void player_print(Player* player){
 
   printf("The player with id %ld has : \n name -> %s\n location id -> %ld\n object ids : \n",player->id,player->name,player->location);
