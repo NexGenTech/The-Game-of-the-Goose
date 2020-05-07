@@ -607,9 +607,12 @@ STATUS game_callback_take(Game game){
       Id obj_id = object_get_id(game->objects[i]);
       if (game_get_object_location(game, obj_id) == space_get_id(space)){
         if (strcmp(obj, object_get_name(game->objects[i])) == 0){
-          player_add_object(game->player, obj_id);
-          space_del_object(space, obj_id);
-          return OK;
+          Object* object = game_get_object(game, obj_id);
+          if(player_can_take_object(game->player, object) == OK){
+            player_add_object(game->player, obj_id);
+            space_del_object(space, obj_id);
+            return OK;
+          }
         }
       }
     }
