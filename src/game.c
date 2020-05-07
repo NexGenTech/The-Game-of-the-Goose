@@ -225,6 +225,30 @@ STATUS game_destroy(Game game) {
   return OK;
 }
 
+STATUS game_clear(Game game) {
+  for (int i = 0; game->spaces[i] != NULL; i++) {
+    space_destroy(game->spaces[i]);
+    game->spaces[i] = NULL;
+  }
+
+  for (int i = 0; game->objects[i] != NULL; i++) {
+    object_destroy(game->objects[i]);
+    game->objects[i] = NULL;
+  }
+
+  for (int i = 0; game->links[i] != NULL; i++) {
+    link_destroy(game->links[i]);
+    game->links[i] = NULL;
+  }
+
+  player_destroy(game->player);
+  game->player = NULL;
+
+  game->last_desc[0] = '\0';
+
+  return OK;
+}
+
 Id game_get_space_id_at(Game game, int position) {
 
   if (position < 0 || position >= MAX_SPACES) {

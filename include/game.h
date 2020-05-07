@@ -397,4 +397,17 @@ char* game_get_last_description(Game game);
  */
 Link* game_get_link(Game game, Id id);
 
+/**
+ * @brief Clears the game
+ *
+ * Gets a game as input clears all of its fields
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param game  the game whose fields will be cleared
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS game_clear(Game game);
+
 #endif
