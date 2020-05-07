@@ -133,8 +133,10 @@ STATUS game_management_load_objects(Game game, char* filename){
        game_add_object(game, object);
       }
 
-      space = game_get_space(game,location);
-      space_add_object(space,id);
+      if(location != NO_ID){
+        space = game_get_space(game,location);
+        space_add_object(space,id);
+      }
     }
   }
 
@@ -301,8 +303,10 @@ STATUS game_management_save(Game game, char* filename){
 
   // Save the game's player
   player = game_get_player(game);
-  sprintf(str, "#p:$ld|%s|%ld|%d|", player_get_id(player), player_get_name(player), player_get_location(player), player_get_backpack_size(player));
+  sprintf(str, "#p:%ld|%s|%ld|%d|", player_get_id(player), player_get_name(player), player_get_location(player), player_get_backpack_size(player));
   fprintf(file, "%s", str);
+
+  fclose(file);
 
   return OK;
 
@@ -321,6 +325,15 @@ STATUS game_management_load(Game game, char* filename){
 
   if(game == NULL){
     return ERROR;
+  }
+
+  for(int i = 0; i < game_get_n_objects(game); i++) {
+    Object* object = game_get_object_at(game, i);
+    Id obj_id = object_get_id(object);
+
+    if(game_get_object_location(game, obj_id) == NO_ID){
+      player_add_object(game_get_player(game), obj_id);
+    }
   }
 
   return OK;
