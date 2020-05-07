@@ -77,7 +77,7 @@ STATUS space_destroy(Space* space) {
     return ERROR;
   }
 
-  free(space->objects);
+  set_destroy(space->objects);
   free(space);
   space = NULL;
 
@@ -319,7 +319,7 @@ STATUS space_print(Space* space) {
     return ERROR;
   }
 
-  fprintf(stdout, "--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
+  fprintf(stdout, "\n\n--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
 
   idaux = space_get_north(space);
   if (NO_ID != idaux) {
