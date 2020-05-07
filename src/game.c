@@ -637,6 +637,14 @@ STATUS game_callback_drop(Game game){
       if (player_search_object(game->player, obj_id) != NO_ID) {
         player_del_object(game->player, obj_id);
         space_add_object(space, obj_id);
+
+        for(int i = 0; player_get_object_at(game->player, i) != NO_ID; i++){              // Search in the player's backpack for any objects that depend on the object
+          Object* object = game_get_object(game, player_get_object_at(game->player, i));  // that the player just dropped
+          if(object_get_dependency(object) == obj_id){
+            player_del_object(game->player, object_get_id(object);
+            space_add_object(space, object_get_id(object);
+          }
+        }
         return OK;
       }
     }
