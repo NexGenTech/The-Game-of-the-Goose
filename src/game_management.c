@@ -317,15 +317,27 @@ STATUS game_management_load(Game game, char* filename){
     return ERROR;
   }
 
-  if(!game_destroy(game)){
-    return ERROR;
-  }
-
-  game = game_create_from_file(filename);
-
   if(game == NULL){
     return ERROR;
   }
+
+  if(!game_clear(game)){
+    return ERROR;
+  }
+
+  if (!game_management_load_spaces(game, filename))
+    return ERROR;
+
+  if (!game_management_load_objects(game, filename))
+    return ERROR;
+
+  if (!game_management_load_links(game, filename))
+    return ERROR;
+
+  if (!game_management_load_players(game, filename))
+    return ERROR;
+
+  game_print_data(game);
 
   for(int i = 0; i < game_get_n_objects(game); i++) {
     Object* object = game_get_object_at(game, i);
