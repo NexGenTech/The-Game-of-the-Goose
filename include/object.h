@@ -251,6 +251,61 @@ STATUS object_set_turnedon(Object* object, BOOL turnedon);
 BOOL object_get_turnedon(Object* object);
 
 /**
+ * @brief Sets the object's dependency
+ *
+ * Gets an Object Id as input and sets it as the object's dependency
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose dependency will change
+ * @param move the object Id of the dependency
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_dependency(Object* object, Id dependency);
+
+/**
+ * @brief Gets the dependency of the object
+ *
+ * Gets an object as input and returns it's dependency
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose dependency will be returned
+ * @return an Id which is the object's dependency
+ */
+Id object_get_dependency(Object* object);
+
+/**
+ * @brief Sets the object's incompatibility
+ *
+ * Gets an Object Id as input and sets it as the object's incompatibility
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose incompatibility will change
+ * @param move the object Id of the incompatibility
+ * @return a STATUS code, ERROR in case of an error or OK
+ */
+STATUS object_set_incompatible(Object* object, Id incompatible);
+
+/**
+ * @brief Gets the incompatibility of the object
+ *
+ * Gets an object as input and returns it's incompatibility
+ *
+ * @date 05-05-2020
+ * @author Evangelos Lazarakis
+ *
+ * @param object the object whose incompatibility will be returned
+ * @return an Id which is the object's incompatibility
+ */
+Id object_get_incompatible(Object* object);
+
+
+/**
  * @brief Print the data of a object
  *
  * Gets an object as input and prints it's fields

@@ -23,6 +23,8 @@ typedef struct _Object{
   Id open;                            // The Id of the link that the object can open
   BOOL illuminate;                    // Specifies if the object can illuminate
   BOOL turnedon;                      // Specifies if an object illuminateable object is turned on
+  Id dependency;                      // Specifies if an object depends on another one in order to be picked up
+  Id incompatible;                    // Specifies if an object is incompatible with another one
 }Object;
 
 
@@ -45,6 +47,8 @@ Object* object_create(Id id){
     newObject->open = NO_ID;
     newObject->illuminate = FALSE;
     newObject->turnedon = FALSE;
+    newObject->dependency = NO_ID;
+    newObject->incompatible = NO_ID;
 
   return newObject;
 }
@@ -189,30 +193,71 @@ BOOL object_get_turnedon(Object* object) {
   return object->turnedon;
 }
 
+STATUS object_set_dependency(Object* object, Id dependency) {
+  if(!object){
+    return ERROR;
+  }
+
+  if(!(object->dependency = dependency)){
+    return ERROR;
+  }
+
+  return OK;
+}
+
+Id object_get_dependency(Object* object) {
+  if (!object) {
+    return NO_ID;
+  }
+  return object->dependency;
+}
+
+STATUS object_set_incompatible(Object* object, Id incompatible){
+  if(!object){
+    return ERROR;
+  }
+
+  if(!(object->incompatible = incompatible)){
+    return ERROR;
+  }
+
+  return OK;
+}
+
+Id object_get_incompatible(Object* object) {
+  if (!object) {
+    return NO_ID;
+  }
+  return object->incompatible;
+}
+
 void object_print(Object* object){
 
   printf("The object with id %ld:\n \tname: %s\n \tdescription: %s\n \topen id: %ld\n",object->id,object->name, object->description, object->open);
 
   if(object->movable == TRUE) {
-    printf("\t movable: %s","TRUE");
+    printf("\t movable: %s\n","TRUE");
   } else {
-    printf("\t movable: %s","FALSE");
+    printf("\t movable: %s\n","FALSE");
   }
 
   if(object->hidden == TRUE) {
-    printf("\t hidden: %s","TRUE");
+    printf("\t hidden: %s\n","TRUE");
   } else {
-    printf("\t hidden: %s","FALSE");
+    printf("\t hidden: %s\n","FALSE");
   }
 
   if(object->illuminate == TRUE) {
-    printf("\t illuminate: %s","TRUE");
+    printf("\t illuminate: %s\n","TRUE");
   } else {
-    printf("\t illuminate: %s","FALSE");
+    printf("\t illuminate: %s\n","FALSE");
   }
+
   if(object->turnedon == TRUE) {
-    printf("\t turned on: %s","TRUE");
+    printf("\t turned on: %s\n","TRUE");
   } else {
-    printf("\t turned on: %s","FALSE");
+    printf("\t turned on: %s\n","FALSE");
   }
+
+  printf("\t dependency: %ld\n\t incompatible: %ld\n", object->dependency, object->incompatible);
 }
