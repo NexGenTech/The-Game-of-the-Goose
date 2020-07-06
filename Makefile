@@ -72,7 +72,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 
 clean:
-	rm -f $(OBJS) $(TESTS) $(GAME)
+	rm -f $(OBJS)/ $(TESTS) $(GAME)
 
 run: $(GAME)
 	./$(GAME) $(ARGS)
